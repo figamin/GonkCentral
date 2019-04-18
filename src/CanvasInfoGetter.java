@@ -64,91 +64,97 @@ public class CanvasInfoGetter {
         courseInfo = new ArrayList<>();
         courseAssignments = new ArrayList<>();
         studentNames = new ArrayList<>();
+        for (int k = 0; k < enrollments.size(); k++)
+        {
+            courseInfo.add(new ArrayList<>());
+            courseAssignments.add(new ArrayList<>());
+            studentNames.add(new ArrayList<>());
+            int idIndex = courseIds.indexOf(enrollments.get(k).getCourseId());
+            if (idIndex != -1)
+            {
+                courseInfo.get(k).add(courseNames.get(idIndex));
+                if (courseStartDates.get(idIndex) != null)
+                {
+                    courseInfo.get(k).add(courseStartDates.get(idIndex).toString());
+                }
+                else
+                {
+                    //courseInfo.get(i).add(null);
+                }
+                Grade classGrade = enrollments.get(k).getGrades();
+                if(classGrade != null)
+                {
+                    if (classGrade.getCurrentScore() != null)
+                    {
+                        //overall score
+                        courseInfo.get(k).add(classGrade.getCurrentScore());
+                    }
+                    else
+                    {
+                        //courseInfo.get(i).add(null);
+                    }
+                }
+                else
+                {
+                    //courseInfo.get(i).add(null);
+                }
 
+                if (enrollments.get(k).getCourseId() != 751 && enrollments.get(k).getCourseId() != 673)
+                {
+                    ListCourseAssignmentsOptions test = new ListCourseAssignmentsOptions(enrollments.get(k).getCourseId().toString());
+                    test.overrideAssignmentDates(false);
+                    courseAssignments.add(assignmentReader.listCourseAssignments(test));
+                    List<User> students = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.STUDENT)));
+                    for (User currentStudent : students)
+                    {
+                        studentNames.get(k).add(currentStudent.getName());
+                    }
+                    List<User> tas = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.TA)));
+                    for (User currentTeacher : tas)
+                    {
+                        studentNames.get(k).add("TA " + currentTeacher.getName());
+                    }
+                    List<User> teachers = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.OBSERVER, GetUsersInCourseOptions.EnrollmentType.TEACHER, GetUsersInCourseOptions.EnrollmentType.DESIGNER)));
+                    for (User currentTeacher : teachers)
+                    {
+                        studentNames.get(k).add("TEACHER " + currentTeacher.getName());
+                    }
+                }
+            }
+        }
         for(int i = 21; i <= 26; i++)
         {
             for(int j = i; j <= i + 6; j += 6)
             {
-                for (int k = 0; k < enrollments.size(); k++)
+                options.gradingPeriodId(j);
+                List<Enrollment> gradeTest = enrollmentReader.getUserEnrollments(options);
+
+                if (gradeTest.get(j - 21).getCourseId() != 751 && gradeTest.get(j - 21).getCourseId() != 673)
                 {
-                    courseInfo.add(new ArrayList<>());
-                    courseAssignments.add(new ArrayList<>());
-                    studentNames.add(new ArrayList<>());
-                    int idIndex = courseIds.indexOf(enrollments.get(k).getCourseId());
-                    if (idIndex != -1)
+                    //for(List<String> currentCourse: courseInfo)
+                    for(int k = 0; k < courseInfo.size(); k++)
                     {
-                        courseInfo.get(k).add(courseNames.get(idIndex));
-                        if (courseStartDates.get(idIndex) != null)
-                        {
-                            courseInfo.get(k).add(courseStartDates.get(idIndex).toString());
-                        }
-                        else
-                        {
-                            //courseInfo.get(i).add(null);
-                        }
-                        Grade classGrade = enrollments.get(k).getGrades();
-                        if(classGrade != null)
+                        Grade classGrade = gradeTest.get(k).getGrades();
+                        if (classGrade != null)
                         {
                             if (classGrade.getCurrentScore() != null)
                             {
-                                //overall score
                                 courseInfo.get(k).add(classGrade.getCurrentScore());
-                            }
-                            else
-                            {
-                                //courseInfo.get(i).add(null);
-                            }
-                        }
-                        else
-                        {
-                            //courseInfo.get(i).add(null);
-                        }
+                                System.out.println("CURRENT SCORE = " + classGrade.getCurrentScore());
 
-                        if (enrollments.get(k).getCourseId() != 751 && enrollments.get(k).getCourseId() != 673)
-                        {
-                            ListCourseAssignmentsOptions test = new ListCourseAssignmentsOptions(enrollments.get(k).getCourseId().toString());
-                            test.overrideAssignmentDates(false);
-                            courseAssignments.add(assignmentReader.listCourseAssignments(test));
-                            List<User> students = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.STUDENT)));
-                            for (User currentStudent : students)
+                            } else
                             {
-                                studentNames.get(k).add(currentStudent.getName());
+                                //currentCourse.add(null);
                             }
-                            List<User> tas = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.TA)));
-                            for (User currentTeacher : tas)
-                            {
-                                studentNames.get(k).add("TA " + currentTeacher.getName());
-                            }
-                            List<User> teachers = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.OBSERVER, GetUsersInCourseOptions.EnrollmentType.TEACHER, GetUsersInCourseOptions.EnrollmentType.DESIGNER)));
-                            for (User currentTeacher : teachers)
-                            {
-                                studentNames.get(k).add("TEACHER " + currentTeacher.getName());
-                            }
-                        }
-                    }
-                }
-                options.gradingPeriodId(j);
-                List<Enrollment> gradeTest = enrollmentReader.getUserEnrollments(options);
-                for(List<String> currentCourse: courseInfo)
-                {
-                    Grade classGrade = gradeTest.get(i - 20).getGrades();
-                    if (classGrade != null)
-                    {
-                        if (classGrade.getCurrentScore() != null)
-                        {
-                            currentCourse.add(classGrade.getCurrentScore());
-
                         } else
                         {
                             //currentCourse.add(null);
                         }
-                    } else
-                    {
-                        //currentCourse.add(null);
+
+
                     }
-
-
                 }
+
             }
         }
     }
