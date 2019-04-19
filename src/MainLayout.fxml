@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -477,91 +478,229 @@
                      <children>
                         <TabPane prefHeight="370.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab text="Course1">
+                            <Tab fx:id="canvastab1" text="Course1">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                             <tabs>
-                                                <Tab text="Overall">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                              <Tab text="Term 1">
+                                              <Tab text="Grades/Classmates">
                                                 <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                              <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                              </columnConstraints>
+                                                              <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                              </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs1trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs1stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children></AnchorPane>
                                                 </content>
                                               </Tab>
-                                              <Tab text="Term 2">
+                                              <Tab text="Assignments">
                                                 <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs1assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children></AnchorPane>
                                                 </content>
                                               </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
                                             </tabs>
                                           </TabPane>
                                        </children></AnchorPane>
                               </content>
                             </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab2" text="Course2">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs2trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs2stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs2assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -570,45 +709,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab3" text="Course3">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs3trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs3stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs3assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -617,45 +826,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab4" text="Course4">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs4trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs4stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs4assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -664,45 +943,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab5" text="Course5">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs5trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs5stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs5assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -711,45 +1060,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab6" text="Course6">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs6trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs6stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs6assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -758,45 +1177,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab7" text="Course7">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs7trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs7stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs7assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -805,45 +1294,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab8" text="Course8">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs8trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs8stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs8assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -852,45 +1411,115 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab9" text="Course9">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs9trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs9stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 2">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Midterm">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 3">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Term 4">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                   </content>
-                                                </Tab>
-                                                <Tab text="Final">
-                                                   <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs9assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>
@@ -899,45 +1528,583 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Course1">
+                              <Tab fx:id="canvastab10" text="Course10">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
                                              <tabs>
-                                                <Tab text="Overall">
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs10trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs10stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 1">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs10assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 2">
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="canvastab11" text="Course11">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs11trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs11stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Midterm">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs11assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 3">
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="canvastab12" text="Course12">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs12trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs12stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Term 4">
+                                                <Tab text="Assignments">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs12assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
-                                                <Tab text="Final">
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="canvastab13" text="Course13">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                <Tab text="Grades/Classmates">
                                                    <content>
-                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs13trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs13stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                                <Tab text="Assignments">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs13assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="canvastab14" text="Course14">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                <Tab text="Grades/Classmates">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs14trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs14stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                                <Tab text="Assignments">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs14assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
                                                    </content>
                                                 </Tab>
                                              </tabs>

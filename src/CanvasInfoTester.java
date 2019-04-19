@@ -1,4 +1,5 @@
 import edu.ksu.canvas.model.assignment.Assignment;
+
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
@@ -18,9 +19,7 @@ public class CanvasInfoTester {
         List<List<String>> courseInfo = canIn.getCourseInfo();
         List<List<Assignment>> assignInfo = canIn.getCourseAssignments();
         List<List<String>> studentNames = canIn.getStudentNames();
-        System.out.println(courseInfo.size());
-        System.out.println(assignInfo.size());
-        System.out.println(studentNames.size());
+
         for(int i = 0; i < courseInfo.size(); i++)
         {
             System.out.println("INFO COURSE " + i);
@@ -55,6 +54,19 @@ public class CanvasInfoTester {
                 else
                 {
                     System.out.println("NO POINTS POSSIBLE");
+                }
+                String[] extensions = asr.getAllowedExtensions();
+                if(extensions != null)
+                {
+                    System.out.println("ALLOWED FILE EXTENSIONS");
+                    for(String str: extensions)
+                    {
+                        System.out.println(str);
+                    }
+                }
+                if (asr.getCreatedAt() != null)
+                {
+                    System.out.println("CREATED ON " + asr.getCreatedAt());
                 }
                 if (asr.getDueAt() != null) {
                     System.out.println("DUE BY " + asr.getDueAt());
@@ -111,6 +123,6 @@ public class CanvasInfoTester {
             }
             System.out.println();
         }
-        System.out.println("TOTAL TIME = " + ((System.currentTimeMillis() - time) / 1000.0 / 60.0) + " MINUTES");
+        System.out.println("TOTAL TIME = " + ((System.currentTimeMillis() - time) / 1000.0) + " SECONDS");
     }
 }

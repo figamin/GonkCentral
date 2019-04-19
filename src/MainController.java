@@ -32,8 +32,7 @@ public class MainController {
     @FXML private Text thursped1, thursped2, thursped3, thursped5, thursped7;
     @FXML private Text friped1, friped2, friped4, friped5, friped6, friped7;
     @FXML private LineChart gradeline;
-    @FXML private NumberAxis numAxis;
-    public void logIn(String username, String password) throws IOException
+    @FXML private NumberAxis numAxis;    public void logIn(String username, String password) throws IOException
     {
         new IPassLogin(username, password);
         numAxis.setForceZeroInRange(false);

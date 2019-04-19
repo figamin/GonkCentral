@@ -1,5 +1,4 @@
 import edu.ksu.canvas.CanvasApiFactory;
-import edu.ksu.canvas.exception.UnauthorizedException;
 import edu.ksu.canvas.interfaces.AssignmentReader;
 import edu.ksu.canvas.interfaces.CourseReader;
 import edu.ksu.canvas.interfaces.EnrollmentReader;
@@ -15,11 +14,10 @@ import edu.ksu.canvas.requestOptions.GetEnrollmentOptions;
 import edu.ksu.canvas.requestOptions.GetUsersInCourseOptions;
 import edu.ksu.canvas.requestOptions.ListCourseAssignmentsOptions;
 import edu.ksu.canvas.requestOptions.ListCurrentUserCoursesOptions;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Whitelist;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,10 +43,10 @@ public class CanvasInfoGetter {
         String canvasUrl = "https://nsboro.instructure.com";
         OauthToken oauthToken = new NonRefreshableOauthToken(authToken);
         CanvasApiFactory apiFactory = new CanvasApiFactory(canvasUrl);
-        EnrollmentReader enrollmentReader = apiFactory.getReader(EnrollmentReader.class, oauthToken);
-        CourseReader courseReader = apiFactory.getReader(CourseReader.class, oauthToken);
-        UserReader userReader = apiFactory.getReader(UserReader.class, oauthToken);
-        AssignmentReader assignmentReader = apiFactory.getReader(AssignmentReader.class, oauthToken);
+        EnrollmentReader enrollmentReader = apiFactory.getReader(EnrollmentReader.class, oauthToken, 100);
+        CourseReader courseReader = apiFactory.getReader(CourseReader.class, oauthToken, 100);
+        UserReader userReader = apiFactory.getReader(UserReader.class, oauthToken, 100);
+        AssignmentReader assignmentReader = apiFactory.getReader(AssignmentReader.class, oauthToken, 100);
         List<Course> courses = courseReader.listCurrentUserCourses(new ListCurrentUserCoursesOptions());
         List<String> courseNames = new ArrayList<>();
         List<Integer> courseIds = new ArrayList<>();
@@ -77,10 +75,6 @@ public class CanvasInfoGetter {
                 {
                     courseInfo.get(k).add(courseStartDates.get(idIndex).toString());
                 }
-                else
-                {
-                    //courseInfo.get(i).add(null);
-                }
                 Grade classGrade = enrollments.get(k).getGrades();
                 if(classGrade != null)
                 {
@@ -89,16 +83,7 @@ public class CanvasInfoGetter {
                         //overall score
                         courseInfo.get(k).add(classGrade.getCurrentScore());
                     }
-                    else
-                    {
-                        //courseInfo.get(i).add(null);
-                    }
                 }
-                else
-                {
-                    //courseInfo.get(i).add(null);
-                }
-
                 if (enrollments.get(k).getCourseId() != 751 && enrollments.get(k).getCourseId() != 673)
                 {
                     ListCourseAssignmentsOptions test = new ListCourseAssignmentsOptions(enrollments.get(k).getCourseId().toString());
@@ -128,10 +113,8 @@ public class CanvasInfoGetter {
             {
                 options.gradingPeriodId(j);
                 List<Enrollment> gradeTest = enrollmentReader.getUserEnrollments(options);
-
                 if (gradeTest.get(j - 21).getCourseId() != 751 && gradeTest.get(j - 21).getCourseId() != 673)
                 {
-                    //for(List<String> currentCourse: courseInfo)
                     for(int k = 0; k < courseInfo.size(); k++)
                     {
                         Grade classGrade = gradeTest.get(k).getGrades();
@@ -140,21 +123,10 @@ public class CanvasInfoGetter {
                             if (classGrade.getCurrentScore() != null)
                             {
                                 courseInfo.get(k).add(classGrade.getCurrentScore());
-                                System.out.println("CURRENT SCORE = " + classGrade.getCurrentScore());
-
-                            } else
-                            {
-                                //currentCourse.add(null);
                             }
-                        } else
-                        {
-                            //currentCourse.add(null);
                         }
-
-
                     }
                 }
-
             }
         }
     }
