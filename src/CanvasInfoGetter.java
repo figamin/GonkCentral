@@ -97,12 +97,12 @@ public class CanvasInfoGetter {
                     List<User> tas = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.TA)));
                     for (User currentTeacher : tas)
                     {
-                        studentNames.get(k).add("TA " + currentTeacher.getName());
+                        studentNames.get(k).add("TA: " + currentTeacher.getName());
                     }
                     List<User> teachers = userReader.getUsersInCourse(new GetUsersInCourseOptions(enrollments.get(k).getCourseId().toString()).enrollmentType(Arrays.asList(GetUsersInCourseOptions.EnrollmentType.OBSERVER, GetUsersInCourseOptions.EnrollmentType.TEACHER, GetUsersInCourseOptions.EnrollmentType.DESIGNER)));
                     for (User currentTeacher : teachers)
                     {
-                        studentNames.get(k).add("TEACHER " + currentTeacher.getName());
+                        studentNames.get(k).add("Teacher: " + currentTeacher.getName());
                     }
                 }
                 else
@@ -117,17 +117,14 @@ public class CanvasInfoGetter {
             {
                 options.gradingPeriodId(j);
                 List<Enrollment> gradeTest = enrollmentReader.getUserEnrollments(options);
-                if (gradeTest.get(j - 21).getCourseId() != 751 && gradeTest.get(j - 21).getCourseId() != 673)
+                for(int k = 0; k < courseInfo.size(); k++)
                 {
-                    for(int k = 0; k < courseInfo.size(); k++)
+                    Grade classGrade = gradeTest.get(k).getGrades();
+                    if (classGrade != null)
                     {
-                        Grade classGrade = gradeTest.get(k).getGrades();
-                        if (classGrade != null)
+                        if (classGrade.getCurrentScore() != null)
                         {
-                            if (classGrade.getCurrentScore() != null)
-                            {
-                                courseInfo.get(k).add(classGrade.getCurrentScore());
-                            }
+                            courseInfo.get(k).add(classGrade.getCurrentScore());
                         }
                     }
                 }

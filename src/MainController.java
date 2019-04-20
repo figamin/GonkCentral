@@ -16,10 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.safety.Whitelist;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,11 +60,13 @@ public class MainController {
     @FXML private Text canvascrs15trm0, canvascrs15trm1, canvascrs15trm2, canvascrs15trm3, canvascrs15trm4, canvascrs15trm5, canvascrs15trm6;
     @FXML private Text canvascrs16trm0, canvascrs16trm1, canvascrs16trm2, canvascrs16trm3, canvascrs16trm4, canvascrs16trm5, canvascrs16trm6;
     @FXML private ListView<String> canvascrs1stud, canvascrs2stud, canvascrs3stud, canvascrs4stud, canvascrs5stud, canvascrs6stud, canvascrs7stud, canvascrs8stud, canvascrs9stud, canvascrs10stud, canvascrs11stud, canvascrs12stud, canvascrs13stud, canvascrs14stud, canvascrs15stud, canvascrs16stud;
-    @FXML private ListView<Assignment> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
+    @FXML private ListView<String> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
     @FXML private NumberAxis numAxis;
+    @FXML private Text builddate;
     private List<List<String>> courseInfo;
     public void logIn(String username, String password, String oauth) throws IOException
     {
+        builddate.setText("Built on " + LocalDate.now());
         new IPassLogin(username, password);
         Task<CanvasInfoGetter> canvas = new Task<CanvasInfoGetter>()
         {
@@ -80,6 +84,7 @@ public class MainController {
             setCanvasTabs();
             setCanvasStudents();
             setCanvasGrades();
+            setCanvasAssignments();
         });
         Thread th = new Thread(canvas);
         th.setDaemon(true);
@@ -231,6 +236,88 @@ public class MainController {
                 counter++;
             }
             gradeline.getData().add(currentClassPoints);
+        }
+    }
+    private void setCanvasAssignments()
+    {
+        List<List<Assignment>> assignments = cget.getCourseAssignments();
+        List<List<String>> assignString = new ArrayList<>();
+        for(int i = 0; i < assignments.size(); i++)
+        {
+            assignString.add(new ArrayList<>());
+            for(int j = 0; j < assignments.get(i).size(); j++)
+            {
+                assignString.get(i).add("========================================");
+                assignString.get(i).add("Name: " + assignments.get(i).get(j).getName());
+                if(assignments.get(i).get(j).getDescription() != null)
+                {
+                    if(!assignments.get(i).get(j).getDescription().isEmpty())
+                    {
+                        String desc = Jsoup.clean(assignments.get(i).get(j).getDescription(), Whitelist.none());
+                        assignString.get(i).add("Description: " + desc.replace("&nbsp;", "\n"));
+                    }
+                    else
+                    {
+                        assignString.get(i).add("No description.");
+                    }
+                }
+                else
+                {
+                    assignString.get(i).add("No description.");
+                }
+                assignString.get(i).add("Created on: " + assignments.get(i).get(j).getCreatedAt().toString());
+                if(assignments.get(i).get(j).getDueAt() != null)
+                {
+                    assignString.get(i).add("Due by: " + assignments.get(i).get(j).getDueAt().toString());
+                }
+                else
+                {
+                    assignString.get(i).add("No due date.");
+                }
+                assignString.get(i).add("========================================");
+                assignString.get(i).add("\n\n");
+            }
+
+        }
+        for(int i = 0; i < assignments.size(); i++)
+        {
+            ObservableList<String> currentStuds = FXCollections.observableArrayList();
+            currentStuds.setAll(assignString.get(i));
+            switch (i)
+            {
+                case 0: canvascrs1assgn.setItems(currentStuds);
+                    break;
+                case 1: canvascrs2assgn.setItems(currentStuds);
+                    break;
+                case 2: canvascrs3assgn.setItems(currentStuds);
+                    break;
+                case 3: canvascrs4assgn.setItems(currentStuds);
+                    break;
+                case 4: canvascrs5assgn.setItems(currentStuds);
+                    break;
+                case 5: canvascrs6assgn.setItems(currentStuds);
+                    break;
+                case 6: canvascrs7assgn.setItems(currentStuds);
+                    break;
+                case 7: canvascrs8assgn.setItems(currentStuds);
+                    break;
+                case 8: canvascrs9assgn.setItems(currentStuds);
+                    break;
+                case 9: canvascrs10assgn.setItems(currentStuds);
+                    break;
+                case 10: canvascrs11assgn.setItems(currentStuds);
+                    break;
+                case 11: canvascrs12assgn.setItems(currentStuds);
+                    break;
+                case 12: canvascrs13assgn.setItems(currentStuds);
+                    break;
+                case 13: canvascrs14assgn.setItems(currentStuds);
+                    break;
+                case 14: canvascrs15assgn.setItems(currentStuds);
+                    break;
+                case 15: canvascrs16assgn.setItems(currentStuds);
+                    break;
+            }
         }
     }
     private void setCanvasTabs()

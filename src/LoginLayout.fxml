@@ -42,9 +42,25 @@
             <Font name="Montserrat SemiBold" size="13.0" />
          </font>
       </Label>
+      <Label text="Oauth Token(TEMPORARY)" GridPane.rowIndex="3">
+         <font>
+            <Font name="Montserrat SemiBold" size="13.0" />
+         </font>
+      </Label>
+      <Label text="Note: Proper Canvas login will be" GridPane.rowIndex="6">
+         <font>
+            <Font name="Montserrat SemiBold" size="13.0" />
+         </font>
+      </Label>
+      <Label text="implemented with school approval" GridPane.rowIndex="7">
+         <font>
+            <Font name="Montserrat SemiBold" size="13.0" />
+         </font>
+      </Label>
       <TextField fx:id="username" onAction="#buttonPress" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <PasswordField fx:id="password" onAction="#buttonPress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button fx:id="loginpress" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#buttonPress" text="Sign in" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+      <PasswordField fx:id="oauthzone" onAction="#buttonPress" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button fx:id="loginpress" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#buttonPress" text="Sign in" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <font>
             <Font name="Montserrat SemiBold" size="13.0" />
          </font>

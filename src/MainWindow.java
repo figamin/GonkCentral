@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  */
 
 public class MainWindow extends Stage{
-    public MainWindow(Button starterButton, String uname, String pass) throws Exception
+    public MainWindow(Button starterButton, String uname, String pass, String oauth) throws Exception
     {
         FXMLLoader loginLoad = new FXMLLoader(getClass().getResource("MainLayout.fxml"));
         Parent root = loginLoad.load();
@@ -19,7 +19,7 @@ public class MainWindow extends Stage{
         stage.setTitle("Gonk Central");
         stage.setScene(mainWindow);
         MainController control = loginLoad.getController();
-        control.logIn(uname, pass, "9522~l72NXLBu6py0n0rZsiAeAjFPIa4IVoHJKgLgeTWyZL553qOVnkbiSgkrEcZo7vZ6");
+        control.logIn(uname, pass, oauth);
         control.setBioText();
         control.setPieData();
         control.setScheduleData();
