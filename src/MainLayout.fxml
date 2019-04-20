@@ -51,112 +51,112 @@
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" GridPane.rowIndex="1">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthplace:" GridPane.rowIndex="2">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DOB:" GridPane.rowIndex="3">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="School Email:" GridPane.rowIndex="4">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ethnicity:" GridPane.rowIndex="5">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Locker Number:" GridPane.rowIndex="6">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Locker Combo:" GridPane.rowIndex="7">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" GridPane.rowIndex="8">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bus Route:" GridPane.rowIndex="9">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guidance Counselor:" GridPane.rowIndex="10">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu7" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu8" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu9" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu10" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                                 <Text fx:id="ipassstu11" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                                    <font>
-                                                      <Font name="Montserrat SemiBold" size="10.0" />
+                                                      <Font name="Montserrat SemiBold" size="12.0" />
                                                    </font>
                                                 </Text>
                                              </children>
@@ -488,7 +488,7 @@
                                                 <content>
                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                               <columnConstraints>
                                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -602,7 +602,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -719,7 +719,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -836,7 +836,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -953,7 +953,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1070,7 +1070,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1187,7 +1187,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1304,7 +1304,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1421,7 +1421,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1538,7 +1538,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1655,7 +1655,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1772,7 +1772,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -1889,7 +1889,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -2006,7 +2006,7 @@
                                                    <content>
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
-                                                            <GridPane prefHeight="65.0" prefWidth="600.0">
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
                                                                <columnConstraints>
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -2103,6 +2103,240 @@
                                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                          <children>
                                                             <ListView fx:id="canvascrs14assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="canvastab15" text="Course15">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                <Tab text="Grades/Classmates">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs15trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs15stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                                <Tab text="Assignments">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs15assgn" prefHeight="303.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                             </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="canvastab16" text="Course16">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="335.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                                             <tabs>
+                                                <Tab text="Grades/Classmates">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <GridPane gridLinesVisible="true" prefHeight="65.0" prefWidth="600.0">
+                                                               <columnConstraints>
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                               </columnConstraints>
+                                                               <rowConstraints>
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                               </rowConstraints>
+                                                               <children>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Overall" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 1" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 2" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Midterms" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 3" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term 4" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finals" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm0" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text fx:id="canvascrs16trm6" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                                                     <font>
+                                                                        <Font name="Montserrat SemiBold" size="16.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </GridPane>
+                                                            <ListView fx:id="canvascrs16stud" layoutY="65.0" prefHeight="237.0" prefWidth="600.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                                <Tab text="Assignments">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <ListView fx:id="canvascrs16assgn" prefHeight="303.0" prefWidth="600.0" />
                                                          </children>
                                                       </AnchorPane>
                                                    </content>

@@ -1,6 +1,4 @@
-import com.sun.javafx.stage.StageHelper;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

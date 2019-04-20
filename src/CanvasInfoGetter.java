@@ -64,12 +64,12 @@ public class CanvasInfoGetter {
         studentNames = new ArrayList<>();
         for (int k = 0; k < enrollments.size(); k++)
         {
-            courseInfo.add(new ArrayList<>());
-            courseAssignments.add(new ArrayList<>());
-            studentNames.add(new ArrayList<>());
+
             int idIndex = courseIds.indexOf(enrollments.get(k).getCourseId());
             if (idIndex != -1)
             {
+                courseInfo.add(new ArrayList<>());
+                studentNames.add(new ArrayList<>());
                 courseInfo.get(k).add(courseNames.get(idIndex));
                 if (courseStartDates.get(idIndex) != null)
                 {
@@ -104,6 +104,10 @@ public class CanvasInfoGetter {
                     {
                         studentNames.get(k).add("TEACHER " + currentTeacher.getName());
                     }
+                }
+                else
+                {
+                    courseAssignments.add(new ArrayList<>());
                 }
             }
         }

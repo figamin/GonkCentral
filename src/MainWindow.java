@@ -19,10 +19,11 @@ public class MainWindow extends Stage{
         stage.setTitle("Gonk Central");
         stage.setScene(mainWindow);
         MainController control = loginLoad.getController();
-        control.logIn(uname, pass);
+        control.logIn(uname, pass, "9522~l72NXLBu6py0n0rZsiAeAjFPIa4IVoHJKgLgeTWyZL553qOVnkbiSgkrEcZo7vZ6");
         control.setBioText();
         control.setPieData();
         control.setScheduleData();
         control.setGradeChart();
+
     }
 }
