@@ -21,4 +21,9 @@ public class GonkMain extends Application{
         primaryStage.setScene(userLogin);
         primaryStage.show();
     }
+
+    public static void main(String[] args)
+    {
+        launch(args);
+    }
 }
