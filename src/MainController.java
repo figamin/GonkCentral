@@ -249,6 +249,14 @@ public class MainController {
             {
                 assignString.get(i).add("========================================");
                 assignString.get(i).add("Name: " + assignments.get(i).get(j).getName());
+                if(assignments.get(i).get(j).getPointsPossible() != null)
+                {
+                    assignString.get(i).add(assignments.get(i).get(j).getPointsPossible() + " points possible");
+                }
+                else
+                {
+                    assignString.get(i).add("No points possible.");
+                }
                 if(assignments.get(i).get(j).getDescription() != null)
                 {
                     if(!assignments.get(i).get(j).getDescription().isEmpty())
