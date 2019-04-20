@@ -29,7 +29,7 @@ public class CleanedCanvasLooker {
         BasicConfigurator.configure();
         Logger.getRootLogger().setLevel(Level.OFF);
         String canvasUrl = "https://nsboro.instructure.com";
-        OauthToken oauthToken = new NonRefreshableOauthToken("9522~l72NXLBu6py0n0rZsiAeAjFPIa4IVoHJKgLgeTWyZL553qOVnkbiSgkrEcZo7vZ6");
+        OauthToken oauthToken = new NonRefreshableOauthToken("");
         CanvasApiFactory apiFactory = new CanvasApiFactory(canvasUrl);
         EnrollmentReader enrollmentReader = apiFactory.getReader(EnrollmentReader.class, oauthToken);
         CourseReader cread = apiFactory.getReader(CourseReader.class, oauthToken);
