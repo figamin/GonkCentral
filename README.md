@@ -12,5 +12,5 @@ A Java program to act as a "hub" for all things Algonquin, built with JavaFX 8 u
 Until the school gives proper OAuth acess, logging into Canvas requires users to manually generate OAuth tokens from the Canvas settings page.
 ## Screenshots:
 ![alt text](https://raw.githubusercontent.com/figman57/GonkCentral/master/screenshots/gonkscreen1.png)
-![alt text](https://raw.githubusercontent.com/figman57/RadixSortTUI/master/TUIscreenshot.png)
+![alt text](https://raw.githubusercontent.com/figman57/GonkCentral/master/screenshots/gonkscreen2.png)
 
