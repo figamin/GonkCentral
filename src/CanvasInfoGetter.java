@@ -14,7 +14,6 @@ import edu.ksu.canvas.requestOptions.GetEnrollmentOptions;
 import edu.ksu.canvas.requestOptions.GetUsersInCourseOptions;
 import edu.ksu.canvas.requestOptions.ListCourseAssignmentsOptions;
 import edu.ksu.canvas.requestOptions.ListCurrentUserCoursesOptions;
-
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;

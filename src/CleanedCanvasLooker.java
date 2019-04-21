@@ -1,13 +1,20 @@
 import edu.ksu.canvas.CanvasApiFactory;
-import edu.ksu.canvas.exception.ObjectNotFoundException;
 import edu.ksu.canvas.exception.UnauthorizedException;
-import edu.ksu.canvas.interfaces.*;
-import edu.ksu.canvas.model.*;
+import edu.ksu.canvas.interfaces.AssignmentReader;
+import edu.ksu.canvas.interfaces.CourseReader;
+import edu.ksu.canvas.interfaces.EnrollmentReader;
+import edu.ksu.canvas.interfaces.UserReader;
+import edu.ksu.canvas.model.Course;
+import edu.ksu.canvas.model.Enrollment;
+import edu.ksu.canvas.model.Grade;
+import edu.ksu.canvas.model.User;
 import edu.ksu.canvas.model.assignment.Assignment;
-import edu.ksu.canvas.model.assignment.AssignmentGroup;
 import edu.ksu.canvas.oauth.NonRefreshableOauthToken;
 import edu.ksu.canvas.oauth.OauthToken;
-import edu.ksu.canvas.requestOptions.*;
+import edu.ksu.canvas.requestOptions.GetEnrollmentOptions;
+import edu.ksu.canvas.requestOptions.GetUsersInCourseOptions;
+import edu.ksu.canvas.requestOptions.ListCourseAssignmentsOptions;
+import edu.ksu.canvas.requestOptions.ListCurrentUserCoursesOptions;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -15,8 +22,10 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Ian Anderson
@@ -98,7 +107,6 @@ public class CleanedCanvasLooker {
                 if (courseStartDates.get(idIndex) != null) {
                     System.out.println("COURSE START DATE = " + courseStartDates.get(idIndex).toString());
                 }
-
                 Grade classGrade = theClass.getGrades();
                 if(classGrade != null) {
                     if (classGrade.getCurrentScore() != null) {
