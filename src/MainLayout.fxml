@@ -7,6 +7,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -2350,6 +2351,12 @@
                               </Tab>
                           </tabs>
                         </TabPane>
+                        <ProgressIndicator fx:id="canvasload" layoutX="264.0" layoutY="151.0" prefHeight="73.0" prefWidth="66.0" />
+                        <Text fx:id="canvasloadtext" layoutX="230.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading...">
+                           <font>
+                              <Font name="Montserrat SemiBold" size="27.0" />
+                           </font>
+                        </Text>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -2390,6 +2397,7 @@
                         <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="369.0" prefWidth="600.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -2406,7 +2414,7 @@
                                     <Font name="Montserrat ExtraBold" size="33.0" />
                                  </font>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gonk Central Alpha 1.0" GridPane.rowIndex="1">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gonk Central Alpha 1.0.1" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Montserrat SemiBold" size="19.0" />
                                  </font>

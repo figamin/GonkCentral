@@ -10,6 +10,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -60,6 +61,8 @@ public class MainController {
     @FXML private ListView<String> canvascrs1stud, canvascrs2stud, canvascrs3stud, canvascrs4stud, canvascrs5stud, canvascrs6stud, canvascrs7stud, canvascrs8stud, canvascrs9stud, canvascrs10stud, canvascrs11stud, canvascrs12stud, canvascrs13stud, canvascrs14stud, canvascrs15stud, canvascrs16stud;
     @FXML private ListView<String> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
     @FXML private NumberAxis numAxis;
+    @FXML private ProgressIndicator canvasload;
+    @FXML private Text canvasloadtext;
     @FXML private Text builddate;
     private List<List<String>> courseInfo;
     public void logIn(String username, String password, String oauth) throws IOException
@@ -83,6 +86,8 @@ public class MainController {
             setCanvasStudents();
             setCanvasGrades();
             setCanvasAssignments();
+            canvasload.setVisible(false);
+            canvasloadtext.setVisible(false);
         });
         Thread th = new Thread(canvas);
         th.setDaemon(true);
