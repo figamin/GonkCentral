@@ -4,10 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
@@ -21,8 +18,7 @@ import org.jsoup.safety.Whitelist;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Ian Anderson
@@ -61,6 +57,7 @@ public class MainController {
     @FXML private ListView<String> canvascrs1stud, canvascrs2stud, canvascrs3stud, canvascrs4stud, canvascrs5stud, canvascrs6stud, canvascrs7stud, canvascrs8stud, canvascrs9stud, canvascrs10stud, canvascrs11stud, canvascrs12stud, canvascrs13stud, canvascrs14stud, canvascrs15stud, canvascrs16stud;
     @FXML private ListView<String> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
     @FXML private NumberAxis numAxis;
+    @FXML private CategoryAxis catAxis;
     @FXML private ProgressIndicator canvasload;
     @FXML private Text canvasloadtext;
     @FXML private Text builddate;
@@ -172,23 +169,25 @@ public class MainController {
         thursped7.setText(scheduleValues.get(209));
         friped7.setText(scheduleValues.get(216));
     }
+
     public void setGradeChart() throws IOException
     {
+        Set<String> categs = new LinkedHashSet<>();
         Document grades = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samgrades.html"), 0);
         List<String> courses = grades.select(".data").eachText();
         List<String> letters = grades.select(".Datac").eachText();
         List<String> gradePeds = grades.select(".Labelc").eachText();
+
         int courseNum = (int) Math.round((courses.size() - 1) / 2.0);
         for(int i = 0; i < courseNum; i++)
         {
             XYChart.Series currentClassPoints = new XYChart.Series();
             currentClassPoints.setName(courses.get((i * 2) + 2).substring(0, 16));
-
             int counter = 3;
             int gradeValue = -10;
             for(int j = i * 12; j < (i * 12) + 10; j++)
             {
-                if(!letters.get(j).isEmpty() || !letters.get(j).equals("&sp;"))
+                if(!letters.get(j).isEmpty() || !letters.get(j).equals("&sp;") || !letters.get(j).equals("&nbsp;"))
                 {
                     switch (letters.get(j))
                     {
@@ -218,28 +217,34 @@ public class MainController {
                             break;
                         case "F": gradeValue = 50;
                             break;
-                        }
-                    if(gradeValue != -10)
-                    {
-                        String gradeToday = gradePeds.get(counter);
-                        if (gradeToday.length() > 6)
-                        {
-                            gradeToday = gradeToday.substring(0, 8);
-                        }
-                        else
-                        {
-                            gradeToday = gradeToday.substring(0, 6);
-                        }
-                        if(!gradeToday.equals("Mid Year") && !gradeToday.equals("Final Ex"))
-                        {
-                            currentClassPoints.getData().add(new XYChart.Data(gradeToday, gradeValue));
-                        }
                     }
+                }
+                if(gradeValue != -10)
+                {
+                    String gradeToday = gradePeds.get(counter);
+                            if (gradeToday.length() > 6)
+                            {
+                                gradeToday = gradeToday.substring(0, 8) + "rog";
+                            }
+                            else
+                            {
+                                gradeToday = gradeToday.substring(0, 6) + " end";
+                            }
+                            if(!gradeToday.equals("Mid Yearrog") && !gradeToday.equals("Final Exrog"))
+                            {
+                                categs.add(gradeToday);
+                                currentClassPoints.getData().add(new XYChart.Data(gradeToday, gradeValue));
+                            }
+
                 }
                 counter++;
             }
             gradeline.getData().add(currentClassPoints);
         }
+        ObservableList<String> sortCats = FXCollections.observableArrayList(categs);
+        Collections.sort(sortCats);
+        catAxis.setCategories(sortCats);
+        catAxis.setAutoRanging(true);
     }
     private void setCanvasAssignments()
     {
@@ -423,7 +428,6 @@ public class MainController {
             switch (j)
             {
                 case 2:
-
                     if(courseInfo.get(0).size() > j)
                     {
                         canvascrs1trm0.setText(courseInfo.get(0).get(j));
@@ -452,37 +456,61 @@ public class MainController {
                     {
                         canvascrs7trm0.setText(courseInfo.get(6).get(j));
                     }
-                    if(courseInfo.get(7).size() > j)
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm0.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm0.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm0.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm0.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm0.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm0.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm0.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm0.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm0.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm0.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm0.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm0.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm0.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm0.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm0.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm0.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {
@@ -505,53 +533,89 @@ public class MainController {
                     {
                         canvascrs3trm1.setText(courseInfo.get(2).get(j));
                     }
-                    if(courseInfo.get(3).size() > j)
+                    if(courseInfo.size() > 3)
                     {
-                        canvascrs4trm1.setText(courseInfo.get(3).get(j));
+                        if(courseInfo.get(3).size() > j)
+                        {
+                            canvascrs4trm1.setText(courseInfo.get(3).get(j));
+                        }
                     }
-                    if(courseInfo.get(4).size() > j)
+                    if(courseInfo.size() > 4)
                     {
-                        canvascrs5trm1.setText(courseInfo.get(4).get(j));
+                        if(courseInfo.get(4).size() > j)
+                        {
+                            canvascrs5trm1.setText(courseInfo.get(4).get(j));
+                        }
                     }
-                    if(courseInfo.get(5).size() > j)
+                    if(courseInfo.size() > 5)
                     {
-                        canvascrs6trm1.setText(courseInfo.get(5).get(j));
+                        if(courseInfo.get(5).size() > j)
+                        {
+                            canvascrs6trm1.setText(courseInfo.get(5).get(j));
+                        }
                     }
-                    if(courseInfo.get(6).size() > j)
+                    if(courseInfo.size() > 6)
                     {
-                        canvascrs7trm1.setText(courseInfo.get(6).get(j));
+                        if(courseInfo.get(6).size() > j)
+                        {
+                            canvascrs7trm1.setText(courseInfo.get(6).get(j));
+                        }
                     }
-                    if(courseInfo.get(7).size() > j)
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm1.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm1.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm1.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm1.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm1.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm1.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm1.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm1.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm1.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm1.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm1.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm1.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm1.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm1.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm1.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm1.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {
@@ -590,37 +654,61 @@ public class MainController {
                     {
                         canvascrs7trm2.setText(courseInfo.get(6).get(j));
                     }
-                    if(courseInfo.get(7).size() > j)
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm2.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm2.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm2.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm2.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm2.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm2.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm2.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm2.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm2.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm2.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm2.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm2.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm2.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm2.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm2.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm2.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {
@@ -659,37 +747,61 @@ public class MainController {
                     {
                         canvascrs7trm3.setText(courseInfo.get(6).get(j));
                     }
-                    if(courseInfo.get(7).size() > j)
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm3.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm3.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm3.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm3.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm3.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm3.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm3.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm3.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm3.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm3.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm3.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm3.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm3.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm3.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm3.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm3.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {
@@ -728,37 +840,61 @@ public class MainController {
                     {
                         canvascrs7trm4.setText(courseInfo.get(6).get(j));
                     }
-                    if(courseInfo.get(7).size() > j)
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm4.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm4.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm4.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm4.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm4.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm4.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm4.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm4.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm4.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm4.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm4.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm4.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm4.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm4.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm4.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm4.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {
@@ -797,43 +933,67 @@ public class MainController {
                     {
                         canvascrs7trm5.setText(courseInfo.get(6).get(j));
                     }
-                    if(courseInfo.get(7).size() > j)
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm5.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm5.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm5.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm5.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm5.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm5.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm5.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm5.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm5.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm5.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm5.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm5.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm5.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm5.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm5.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm6.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {
                         if(courseInfo.get(15).size() > j)
                         {
-                            canvascrs16trm5.setText(courseInfo.get(15).get(j));
+                            canvascrs16trm6.setText(courseInfo.get(15).get(j));
                         }
                     }
                     break;
@@ -866,37 +1026,62 @@ public class MainController {
                     {
                         canvascrs7trm6.setText(courseInfo.get(6).get(j));
                     }
-                    if(courseInfo.get(7).size() > j)
+
+                    if(courseInfo.size() > 7)
                     {
-                        canvascrs8trm6.setText(courseInfo.get(7).get(j));
+                        if(courseInfo.get(7).size() > j)
+                        {
+                            canvascrs8trm6.setText(courseInfo.get(7).get(j));
+                        }
                     }
-                    if(courseInfo.get(8).size() > j)
+                    if(courseInfo.size() > 8)
                     {
-                        canvascrs9trm6.setText(courseInfo.get(8).get(j));
+                        if(courseInfo.get(8).size() > j)
+                        {
+                            canvascrs9trm6.setText(courseInfo.get(8).get(j));
+                        }
                     }
-                    if(courseInfo.get(9).size() > j)
+                    if(courseInfo.size() > 9)
                     {
-                        canvascrs10trm6.setText(courseInfo.get(9).get(j));
+                        if(courseInfo.get(9).size() > j)
+                        {
+                            canvascrs10trm6.setText(courseInfo.get(9).get(j));
+                        }
                     }
-                    if(courseInfo.get(10).size() > j)
+                    if(courseInfo.size() > 10)
                     {
-                        canvascrs11trm6.setText(courseInfo.get(10).get(j));
+                        if(courseInfo.get(10).size() > j)
+                        {
+                            canvascrs11trm6.setText(courseInfo.get(10).get(j));
+                        }
                     }
-                    if(courseInfo.get(11).size() > j)
+                    if(courseInfo.size() > 11)
                     {
-                        canvascrs12trm6.setText(courseInfo.get(11).get(j));
+                        if(courseInfo.get(11).size() > j)
+                        {
+                            canvascrs12trm6.setText(courseInfo.get(11).get(j));
+                        }
                     }
-                    if(courseInfo.get(12).size() > j)
+                    if(courseInfo.size() > 12)
                     {
-                        canvascrs13trm6.setText(courseInfo.get(12).get(j));
+                        if(courseInfo.get(12).size() > j)
+                        {
+                            canvascrs13trm6.setText(courseInfo.get(12).get(j));
+                        }
                     }
-                    if(courseInfo.get(13).size() > j)
+                    if(courseInfo.size() > 13)
                     {
-                        canvascrs14trm6.setText(courseInfo.get(13).get(j));
+                        if(courseInfo.get(13).size() > j)
+                        {
+                            canvascrs14trm6.setText(courseInfo.get(13).get(j));
+                        }
                     }
-                    if(courseInfo.get(14).size() > j)
+                    if(courseInfo.size() > 14)
                     {
-                        canvascrs15trm6.setText(courseInfo.get(14).get(j));
+                        if(courseInfo.get(14).size() > j)
+                        {
+                            canvascrs15trm6.setText(courseInfo.get(14).get(j));
+                        }
                     }
                     if(courseInfo.size() > 15)
                     {

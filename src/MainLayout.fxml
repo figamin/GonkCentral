@@ -460,7 +460,7 @@
                                        <children>
                                           <LineChart fx:id="gradeline" prefHeight="335.0" prefWidth="600.0" title="Grades over time">
                                             <xAxis>
-                                              <CategoryAxis label="Time" side="BOTTOM" />
+                                              <CategoryAxis fx:id="catAxis" label="Time" side="BOTTOM" />
                                             </xAxis>
                                             <yAxis>
                                               <NumberAxis fx:id="numAxis" label="Grades" side="LEFT" />
