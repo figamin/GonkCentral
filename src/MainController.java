@@ -56,7 +56,7 @@ public class MainController {
     @FXML private Text canvascrs16trm0, canvascrs16trm1, canvascrs16trm2, canvascrs16trm3, canvascrs16trm4, canvascrs16trm5, canvascrs16trm6;
     @FXML private ListView<String> canvascrs1stud, canvascrs2stud, canvascrs3stud, canvascrs4stud, canvascrs5stud, canvascrs6stud, canvascrs7stud, canvascrs8stud, canvascrs9stud, canvascrs10stud, canvascrs11stud, canvascrs12stud, canvascrs13stud, canvascrs14stud, canvascrs15stud, canvascrs16stud;
     @FXML private ListView<String> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
-    @FXML private NumberAxis numAxis;
+    @FXML private CategoryAxis yAxis;
     @FXML private CategoryAxis catAxis;
     @FXML private ProgressIndicator canvasload;
     @FXML private Text canvasloadtext;
@@ -89,7 +89,6 @@ public class MainController {
         Thread th = new Thread(canvas);
         th.setDaemon(true);
         th.start();
-        numAxis.setForceZeroInRange(false);
         gradeline.setLegendSide(Side.RIGHT);
     }
     public void setBioText() throws IOException
@@ -112,12 +111,23 @@ public class MainController {
     public void setPieData() throws IOException
     {
         List<String> showedUp = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samattendance.htm"), 0).select(".DataMBl").eachText();
-        double daysShowed = Double.parseDouble(showedUp.get(1)) - Double.parseDouble(showedUp.get(5)) - Double.parseDouble(showedUp.get(6));
-        ObservableList<PieChart.Data> attendPieData = FXCollections.observableArrayList(
-                new PieChart.Data("Present", daysShowed),
-                new PieChart.Data("Absent", Double.parseDouble(showedUp.get(4))),
-                new PieChart.Data("Tardy", Double.parseDouble(showedUp.get(5))),
-                new PieChart.Data("Dismissed", Double.parseDouble(showedUp.get(6))));
+        double daysShowed = Double.parseDouble(showedUp.get(1));
+        ObservableList<PieChart.Data> attendPieData = FXCollections.observableArrayList();
+        if(!showedUp.get(4).isEmpty())
+        {
+            attendPieData.add(new PieChart.Data("Absent", Double.parseDouble(showedUp.get(4))));
+        }
+        if(!showedUp.get(5).isEmpty())
+        {
+            attendPieData.add(new PieChart.Data("Tardy", Double.parseDouble(showedUp.get(5))));
+            daysShowed -= Double.parseDouble(showedUp.get(5));
+        }
+        if(!showedUp.get(5).isEmpty())
+        {
+            attendPieData.add(new PieChart.Data("Dismissed", Double.parseDouble(showedUp.get(6))));
+            daysShowed -= Double.parseDouble(showedUp.get(6));
+        }
+        attendPieData.add(new PieChart.Data("Present", daysShowed));
         attendpie.setData(attendPieData);
         for(PieChart.Data data: attendpie.getData())
         {
@@ -173,6 +183,7 @@ public class MainController {
     public void setGradeChart() throws IOException
     {
         Set<String> categs = new LinkedHashSet<>();
+        Set<String> ygrades = new LinkedHashSet<>();
         Document grades = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samgrades.html"), 0);
         List<String> courses = grades.select(".data").eachText();
         List<String> letters = grades.select(".Datac").eachText();
@@ -184,42 +195,19 @@ public class MainController {
             XYChart.Series currentClassPoints = new XYChart.Series();
             currentClassPoints.setName(courses.get((i * 2) + 2).substring(0, 16));
             int counter = 3;
-            int gradeValue = -10;
+            String gradeValue = "";
             for(int j = i * 12; j < (i * 12) + 10; j++)
             {
                 if(!letters.get(j).isEmpty() || !letters.get(j).equals("&sp;") || !letters.get(j).equals("&nbsp;"))
                 {
-                    switch (letters.get(j))
+                    gradeValue = letters.get(j);
+                    if(!gradeValue.isEmpty() && gradeValue.indexOf("-") == -1 && gradeValue.indexOf("+") == -1)
                     {
-                        case "A+": gradeValue = 97;
-                            break;
-                        case "A": gradeValue = 93;
-                            break;
-                        case "A-": gradeValue = 90;
-                            break;
-                        case "B+": gradeValue = 87;
-                            break;
-                        case "B": gradeValue = 83;
-                            break;
-                        case "B-": gradeValue = 80;
-                            break;
-                        case "C+": gradeValue = 77;
-                            break;
-                        case "C": gradeValue = 73;
-                            break;
-                        case "C-": gradeValue = 70;
-                            break;
-                        case "D+": gradeValue = 67;
-                            break;
-                        case "D": gradeValue = 63;
-                            break;
-                        case "D-": gradeValue = 60;
-                            break;
-                        case "F": gradeValue = 50;
-                            break;
+                        gradeValue += ",";
                     }
+
                 }
-                if(gradeValue != -10)
+                if(!gradeValue.isEmpty())
                 {
                     String gradeToday = gradePeds.get(counter);
                             if (gradeToday.length() > 6)
@@ -233,6 +221,7 @@ public class MainController {
                             if(!gradeToday.equals("Mid Yearrog") && !gradeToday.equals("Final Exrog"))
                             {
                                 categs.add(gradeToday);
+                                ygrades.add(gradeValue);
                                 currentClassPoints.getData().add(new XYChart.Data(gradeToday, gradeValue));
                             }
 
@@ -242,8 +231,12 @@ public class MainController {
             gradeline.getData().add(currentClassPoints);
         }
         ObservableList<String> sortCats = FXCollections.observableArrayList(categs);
+        ObservableList<String> sortVals = FXCollections.observableArrayList(ygrades);
         Collections.sort(sortCats);
+        Collections.sort(sortVals);
+        Collections.reverse(sortVals);
         catAxis.setCategories(sortCats);
+        yAxis.setCategories(sortVals);
         catAxis.setAutoRanging(true);
     }
     private void setCanvasAssignments()

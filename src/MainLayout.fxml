@@ -463,7 +463,7 @@
                                               <CategoryAxis fx:id="catAxis" label="Time" side="BOTTOM" />
                                             </xAxis>
                                             <yAxis>
-                                              <NumberAxis fx:id="numAxis" label="Grades" side="LEFT" />
+                                              <CategoryAxis fx:id="yAxis" label="Grades" side="LEFT" />
                                             </yAxis>
                                           </LineChart>
                                        </children></AnchorPane>
