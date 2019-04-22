@@ -22,8 +22,7 @@ public class LoginController {
     @FXML private Button loginpress;
     @FXML protected void buttonPress(ActionEvent e) throws IOException
     {
-        //IPassLogin letsGo = new IPassLogin(username.getText(), password.getText());
-        IPassLogin letsGo = new IPassLogin("5475moyer", "kaiserreich");
+        IPassLogin letsGo = new IPassLogin(username.getText(), password.getText());
         String pageTester = letsGo.scrapePage(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/syslogin.htm"));
         if (pageTester.length() > 150)
         {
