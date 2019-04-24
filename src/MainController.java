@@ -210,20 +210,20 @@ public class MainController {
                 if(!gradeValue.isEmpty())
                 {
                     String gradeToday = gradePeds.get(counter);
-                            if (gradeToday.length() > 6)
-                            {
-                                gradeToday = gradeToday.substring(0, 8) + "rog";
-                            }
-                            else
-                            {
-                                gradeToday = gradeToday.substring(0, 6) + " end";
-                            }
-                            if(!gradeToday.equals("Mid Yearrog") && !gradeToday.equals("Final Exrog"))
-                            {
-                                categs.add(gradeToday);
-                                ygrades.add(gradeValue);
-                                currentClassPoints.getData().add(new XYChart.Data(gradeToday, gradeValue));
-                            }
+                    if (gradeToday.length() > 6)
+                    {
+                        gradeToday = gradeToday.substring(0, 8) + "rog";
+                    }
+                    else
+                    {
+                        gradeToday = gradeToday.substring(0, 6) + " end";
+                    }
+                    if(!gradeToday.equals("Mid Yearrog") && !gradeToday.equals("Final Exrog"))
+                    {
+                        categs.add(gradeToday);
+                        ygrades.add(gradeValue);
+                        currentClassPoints.getData().add(new XYChart.Data(gradeToday, gradeValue));
+                    }
 
                 }
                 counter++;
@@ -380,33 +380,33 @@ public class MainController {
             switch (i)
             {
                 case 0: canvascrs1stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 1: canvascrs2stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 2: canvascrs3stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 3: canvascrs4stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 4: canvascrs5stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 5: canvascrs6stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 6: canvascrs7stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 7: canvascrs8stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 8: canvascrs9stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 9: canvascrs10stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 10: canvascrs11stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 11: canvascrs12stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 12: canvascrs13stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 13: canvascrs14stud.setItems(currentStuds);
-                        break;
+                    break;
                 case 14: canvascrs15stud.setItems(currentStuds);
                     break;
                 case 15: canvascrs16stud.setItems(currentStuds);
@@ -512,7 +512,7 @@ public class MainController {
                             canvascrs16trm0.setText(courseInfo.get(15).get(j));
                         }
                     }
-                        break;
+                    break;
                 case 3:
                     if(courseInfo.get(0).size() > j)
                     {
