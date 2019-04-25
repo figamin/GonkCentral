@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -471,6 +470,12 @@
                               </Tab>
                           </tabs>
                         </TabPane>
+                        <ProgressIndicator fx:id="iPassLoad" layoutX="264.0" layoutY="151.0" prefHeight="73.0" prefWidth="66.0" />
+                        <Text fx:id="iPassLoadText" layoutX="230.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading...">
+                           <font>
+                              <Font name="Montserrat SemiBold" size="27.0" />
+                           </font>
+                        </Text>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -2372,7 +2377,16 @@
             </Tab>
             <Tab text="Clubs">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane fx:id="clubTabs" prefHeight="367.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" />
+                        <ProgressIndicator fx:id="clubLoad" layoutX="264.0" layoutY="151.0" prefHeight="73.0" prefWidth="66.0" />
+                        <Text fx:id="clubLoadText" layoutX="230.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading...">
+                           <font>
+                              <Font name="Montserrat SemiBold" size="27.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Arts">
@@ -2414,7 +2428,7 @@
                                     <Font name="Montserrat ExtraBold" size="33.0" />
                                  </font>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gonk Central Alpha 1.0.3" GridPane.rowIndex="1">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gonk Central Alpha 1.1" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Montserrat SemiBold" size="19.0" />
                                  </font>

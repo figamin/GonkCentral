@@ -15,15 +15,9 @@ public class MainWindow extends Stage{
         FXMLLoader loginLoad = new FXMLLoader(getClass().getResource("MainLayout.fxml"));
         Parent root = loginLoad.load();
         Stage stage = (Stage) starterButton.getScene().getWindow();
-        Scene mainWindow = new Scene(root, 600, 400);
         stage.setTitle("Gonk Central");
-        stage.setScene(mainWindow);
         MainController control = loginLoad.getController();
+        stage.setScene(new Scene(root, 600, 400));
         control.logIn(uname, pass, oauth);
-        control.setBioText();
-        control.setPieData();
-        control.setScheduleData();
-        control.setGradeChart();
-
     }
 }

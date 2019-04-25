@@ -4,13 +4,13 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
@@ -58,15 +58,29 @@ public class MainController {
     @FXML private ListView<String> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
     @FXML private CategoryAxis yAxis;
     @FXML private CategoryAxis catAxis;
-    @FXML private ProgressIndicator canvasload;
-    @FXML private Text canvasloadtext;
+    @FXML private ProgressIndicator canvasload, iPassLoad, clubLoad;
+    @FXML private Text canvasloadtext, iPassLoadText, clubLoadText;
     @FXML private Text builddate;
+    @FXML private TabPane clubTabs;
     private List<List<String>> courseInfo;
-    public void logIn(String username, String password, String oauth) throws IOException
+    private List<List<String>> clubData;
+    public void logIn(String username, String password, String oauth)
     {
         builddate.setText("Built on " + LocalDate.now());
-        new IPassLogin(username, password);
-        Task<CanvasInfoGetter> canvas = new Task<CanvasInfoGetter>()
+        Task<List<Document>> iPassGetter = new Task<List<Document>>() {
+            @Override
+            protected List<Document> call() throws Exception
+            {
+                new IPassLogin(username, password);
+                List<Document> docs = new ArrayList<>();
+                docs.add(Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/istudentbio.htm"), 0));
+                docs.add(Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samattendance.htm"), 0));
+                docs.add(Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samschedule.htm"), 0));
+                docs.add(Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samgrades.html"), 0));
+                return docs;
+            }
+        };
+        Task<CanvasInfoGetter> canvasGetter = new Task<CanvasInfoGetter>()
         {
             @Override
             protected CanvasInfoGetter call() throws Exception
@@ -75,9 +89,33 @@ public class MainController {
             }
 
         };
-        canvas.setOnSucceeded(e ->
+        Task<List<List<String>>> clubGetter = new Task<List<List<String>>>() {
+            @Override
+            protected List<List<String>> call() throws Exception
+            {
+                return ClubInfoGetter.getInfo();
+            }
+        };
+        iPassGetter.setOnSucceeded(e ->
         {
-            cget = canvas.getValue();
+            List<Document> iPassData = iPassGetter.getValue();
+            setBioText(iPassData.get(0));
+            setPieData(iPassData.get(1));
+            setScheduleData(iPassData.get(2));
+            setGradeChart(iPassData.get(3));
+            iPassLoad.setVisible(false);
+            iPassLoadText.setVisible(false);
+        });
+        clubGetter.setOnSucceeded(e ->
+        {
+            clubData = clubGetter.getValue();
+            setClubTabs();
+            clubLoad.setVisible(false);
+            clubLoadText.setVisible(false);
+        });
+        canvasGetter.setOnSucceeded(e ->
+        {
+            cget = canvasGetter.getValue();
             courseInfo = cget.getCourseInfo();
             setCanvasTabs();
             setCanvasStudents();
@@ -86,14 +124,19 @@ public class MainController {
             canvasload.setVisible(false);
             canvasloadtext.setVisible(false);
         });
-        Thread th = new Thread(canvas);
-        th.setDaemon(true);
-        th.start();
+        Thread iPassThread = new Thread(iPassGetter);
+        Thread canvThread = new Thread(canvasGetter);
+        Thread clubThread = new Thread(clubGetter);
+        iPassThread.setDaemon(true);
+        iPassThread.start();
+        canvThread.setDaemon(true);
+        canvThread.start();
+        clubThread.setDaemon(true);
+        clubThread.start();
         gradeline.setLegendSide(Side.RIGHT);
     }
-    public void setBioText() throws IOException
+    private void setBioText(Document parsedBio)
     {
-        Document parsedBio = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/istudentbio.htm"), 0);
         List<String> ageInfo = parsedBio.select(".DataMBl").eachText();
         List<String> bioText = parsedBio.select(".Datal").eachText();
         ipassstu1.setText(bioText.get(4));
@@ -108,9 +151,9 @@ public class MainController {
         ipassstu10.setText(bioText.get(44));
         ipassstu11.setText(bioText.get(2));
     }
-    public void setPieData() throws IOException
+    private void setPieData(Document pieData)
     {
-        List<String> showedUp = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samattendance.htm"), 0).select(".DataMBl").eachText();
+        List<String> showedUp = pieData.select(".DataMBl").eachText();
         double daysShowed = Double.parseDouble(showedUp.get(1));
         ObservableList<PieChart.Data> attendPieData = FXCollections.observableArrayList();
         if(!showedUp.get(4).isEmpty())
@@ -139,9 +182,9 @@ public class MainController {
             });
         }
     }
-    public void setScheduleData() throws IOException
+    private void setScheduleData(Document scheduleData)
     {
-        List<String> scheduleValues = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samschedule.htm"), 0).select(".DATA").eachText();
+        List<String> scheduleValues = scheduleData.select(".DATA").eachText();
         ped1.setText(scheduleValues.get(4) + "\n" + scheduleValues.get(5) + "\n" + scheduleValues.get(6));
         ped2.setText(scheduleValues.get(34) + "\n" + scheduleValues.get(35) + "\n" + scheduleValues.get(36));
         ped3.setText(scheduleValues.get(64) + "\n" + scheduleValues.get(65) + "\n" + scheduleValues.get(66));
@@ -180,15 +223,13 @@ public class MainController {
         friped7.setText(scheduleValues.get(216));
     }
 
-    public void setGradeChart() throws IOException
+    private void setGradeChart(Document grades)
     {
         Set<String> categs = new LinkedHashSet<>();
         Set<String> ygrades = new LinkedHashSet<>();
-        Document grades = Jsoup.parse(new URL("https://ipassweb.harrisschool.solutions/school/nsboro/samgrades.html"), 0);
         List<String> courses = grades.select(".data").eachText();
         List<String> letters = grades.select(".Datac").eachText();
         List<String> gradePeds = grades.select(".Labelc").eachText();
-
         int courseNum = (int) Math.round((courses.size() - 1) / 2.0);
         for(int i = 0; i < courseNum; i++)
         {
@@ -1087,5 +1128,16 @@ public class MainController {
             }
         }
 
+    }
+    private void setClubTabs()
+    {
+        for(List<String> currentClubData: clubData)
+        {
+            Text clubBody = new Text(currentClubData.get(1));
+            clubBody.setFont(new Font("Montserrat SemiBold", 14));
+            clubBody.setWrappingWidth(600);
+            Tab clubTab = new Tab(currentClubData.get(0), clubBody);
+            clubTabs.getTabs().add(clubTab);
+        }
     }
 }
