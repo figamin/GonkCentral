@@ -114,6 +114,7 @@ public class CanvasInfoGetter {
         {
             for(int j = i; j <= i + 6; j += 6)
             {
+                // seems to be broken now?
                 options.gradingPeriodId(j);
                 List<Enrollment> gradeTest = enrollmentReader.getUserEnrollments(options);
                 for(int k = 0; k < courseInfo.size(); k++)

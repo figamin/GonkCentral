@@ -1,15 +1,22 @@
 import edu.ksu.canvas.model.assignment.Assignment;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextBoundsType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,43 +34,43 @@ import java.util.*;
 
 public class MainController {
     private CanvasInfoGetter cget;
-    @FXML private Text ipassstu1, ipassstu2, ipassstu3, ipassstu4, ipassstu5, ipassstu6, ipassstu7, ipassstu8, ipassstu9, ipassstu10, ipassstu11;
-    @FXML private PieChart attendpie;
-    @FXML private Label piehover;
-    @FXML private Text ped1, ped2, ped3, ped4, ped5, ped6, ped7;
-    @FXML private Text monped1, monped2, monped3, monped4, monped5, monped6, monped7;
-    @FXML private Text tueped1, tueped3, tueped4, tueped5, tueped6;
-    @FXML private Text wendped2, wendped3, wendped4, wendped5, wendped6, wendped7;
-    @FXML private Text thursped1, thursped2, thursped3, thursped5, thursped7;
-    @FXML private Text friped1, friped2, friped4, friped5, friped6, friped7;
-    @FXML private LineChart gradeline;
-    @FXML private Tab canvastab1, canvastab2, canvastab3, canvastab4, canvastab5, canvastab6, canvastab7, canvastab8, canvastab9, canvastab10, canvastab11, canvastab12, canvastab13, canvastab14, canvastab15, canvastab16;
-    @FXML private Text canvascrs1trm0, canvascrs1trm1, canvascrs1trm2, canvascrs1trm3, canvascrs1trm4, canvascrs1trm5, canvascrs1trm6;
-    @FXML private Text canvascrs2trm0, canvascrs2trm1, canvascrs2trm2, canvascrs2trm3, canvascrs2trm4, canvascrs2trm5, canvascrs2trm6;
-    @FXML private Text canvascrs3trm0, canvascrs3trm1, canvascrs3trm2, canvascrs3trm3, canvascrs3trm4, canvascrs3trm5, canvascrs3trm6;
-    @FXML private Text canvascrs4trm0, canvascrs4trm1, canvascrs4trm2, canvascrs4trm3, canvascrs4trm4, canvascrs4trm5, canvascrs4trm6;
-    @FXML private Text canvascrs5trm0, canvascrs5trm1, canvascrs5trm2, canvascrs5trm3, canvascrs5trm4, canvascrs5trm5, canvascrs5trm6;
-    @FXML private Text canvascrs6trm0, canvascrs6trm1, canvascrs6trm2, canvascrs6trm3, canvascrs6trm4, canvascrs6trm5, canvascrs6trm6;
-    @FXML private Text canvascrs7trm0, canvascrs7trm1, canvascrs7trm2, canvascrs7trm3, canvascrs7trm4, canvascrs7trm5, canvascrs7trm6;
-    @FXML private Text canvascrs8trm0, canvascrs8trm1, canvascrs8trm2, canvascrs8trm3, canvascrs8trm4, canvascrs8trm5, canvascrs8trm6;
-    @FXML private Text canvascrs9trm0, canvascrs9trm1, canvascrs9trm2, canvascrs9trm3, canvascrs9trm4, canvascrs9trm5, canvascrs9trm6;
-    @FXML private Text canvascrs10trm0, canvascrs10trm1, canvascrs10trm2, canvascrs10trm3, canvascrs10trm4, canvascrs10trm5, canvascrs10trm6;
-    @FXML private Text canvascrs11trm0, canvascrs11trm1, canvascrs11trm2, canvascrs11trm3, canvascrs11trm4, canvascrs11trm5, canvascrs11trm6;
-    @FXML private Text canvascrs12trm0, canvascrs12trm1, canvascrs12trm2, canvascrs12trm3, canvascrs12trm4, canvascrs12trm5, canvascrs12trm6;
-    @FXML private Text canvascrs13trm0, canvascrs13trm1, canvascrs13trm2, canvascrs13trm3, canvascrs13trm4, canvascrs13trm5, canvascrs13trm6;
-    @FXML private Text canvascrs14trm0, canvascrs14trm1, canvascrs14trm2, canvascrs14trm3, canvascrs14trm4, canvascrs14trm5, canvascrs14trm6;
-    @FXML private Text canvascrs15trm0, canvascrs15trm1, canvascrs15trm2, canvascrs15trm3, canvascrs15trm4, canvascrs15trm5, canvascrs15trm6;
-    @FXML private Text canvascrs16trm0, canvascrs16trm1, canvascrs16trm2, canvascrs16trm3, canvascrs16trm4, canvascrs16trm5, canvascrs16trm6;
-    @FXML private ListView<String> canvascrs1stud, canvascrs2stud, canvascrs3stud, canvascrs4stud, canvascrs5stud, canvascrs6stud, canvascrs7stud, canvascrs8stud, canvascrs9stud, canvascrs10stud, canvascrs11stud, canvascrs12stud, canvascrs13stud, canvascrs14stud, canvascrs15stud, canvascrs16stud;
-    @FXML private ListView<String> canvascrs1assgn, canvascrs2assgn, canvascrs3assgn, canvascrs4assgn, canvascrs5assgn, canvascrs6assgn, canvascrs7assgn, canvascrs8assgn, canvascrs9assgn, canvascrs10assgn, canvascrs11assgn, canvascrs12assgn, canvascrs13assgn, canvascrs14assgn, canvascrs15assgn, canvascrs16assgn;
-    @FXML private CategoryAxis yAxis;
-    @FXML private CategoryAxis catAxis;
-    @FXML private ProgressIndicator canvasload, iPassLoad, clubLoad;
-    @FXML private Text canvasloadtext, iPassLoadText, clubLoadText;
-    @FXML private Text builddate;
-    @FXML private TabPane clubTabs;
+    @FXML
+    private Text ipassstu1, ipassstu2, ipassstu3, ipassstu4, ipassstu5, ipassstu6, ipassstu7, ipassstu8, ipassstu9, ipassstu10, ipassstu11;
+    @FXML
+    private PieChart attendpie;
+    @FXML
+    private Label piehover;
+    @FXML
+    private Text ped1, ped2, ped3, ped4, ped5, ped6, ped7;
+    @FXML
+    private Text monped1, monped2, monped3, monped4, monped5, monped6, monped7;
+    @FXML
+    private Text tueped1, tueped3, tueped4, tueped5, tueped6;
+    @FXML
+    private Text wendped2, wendped3, wendped4, wendped5, wendped6, wendped7;
+    @FXML
+    private Text thursped1, thursped2, thursped3, thursped5, thursped7;
+    @FXML
+    private Text friped1, friped2, friped4, friped5, friped6, friped7;
+    @FXML
+    private LineChart gradeline;
+    @FXML
+    private CategoryAxis yAxis;
+    @FXML
+    private CategoryAxis catAxis;
+    @FXML
+    private ProgressIndicator canvasload, iPassLoad, clubLoad;
+    @FXML
+    private Text canvasloadtext, iPassLoadText, clubLoadText;
+    @FXML
+    private Text builddate;
+    @FXML
+    private TabPane clubTabs;
+    @FXML
+    private TabPane canvasTabs;
     private List<List<String>> courseInfo;
     private List<List<String>> clubData;
+
     public void logIn(String username, String password, String oauth)
     {
         builddate.setText("Built on " + LocalDate.now());
@@ -80,8 +87,7 @@ public class MainController {
                 return docs;
             }
         };
-        Task<CanvasInfoGetter> canvasGetter = new Task<CanvasInfoGetter>()
-        {
+        Task<CanvasInfoGetter> canvasGetter = new Task<CanvasInfoGetter>() {
             @Override
             protected CanvasInfoGetter call() throws Exception
             {
@@ -118,8 +124,7 @@ public class MainController {
             cget = canvasGetter.getValue();
             courseInfo = cget.getCourseInfo();
             setCanvasTabs();
-            setCanvasStudents();
-            setCanvasGrades();
+            setCanvasGradesAndStudents();
             setCanvasAssignments();
             canvasload.setVisible(false);
             canvasloadtext.setVisible(false);
@@ -135,6 +140,7 @@ public class MainController {
         clubThread.start();
         gradeline.setLegendSide(Side.RIGHT);
     }
+
     private void setBioText(Document parsedBio)
     {
         List<String> ageInfo = parsedBio.select(".DataMBl").eachText();
@@ -151,28 +157,29 @@ public class MainController {
         ipassstu10.setText(bioText.get(44));
         ipassstu11.setText(bioText.get(2));
     }
+
     private void setPieData(Document pieData)
     {
         List<String> showedUp = pieData.select(".DataMBl").eachText();
         double daysShowed = Double.parseDouble(showedUp.get(1));
         ObservableList<PieChart.Data> attendPieData = FXCollections.observableArrayList();
-        if(!showedUp.get(4).isEmpty())
+        if (!showedUp.get(4).isEmpty())
         {
             attendPieData.add(new PieChart.Data("Absent", Double.parseDouble(showedUp.get(4))));
         }
-        if(!showedUp.get(5).isEmpty())
+        if (!showedUp.get(5).isEmpty())
         {
             attendPieData.add(new PieChart.Data("Tardy", Double.parseDouble(showedUp.get(5))));
             daysShowed -= Double.parseDouble(showedUp.get(5));
         }
-        if(!showedUp.get(5).isEmpty())
+        if (!showedUp.get(5).isEmpty())
         {
             attendPieData.add(new PieChart.Data("Dismissed", Double.parseDouble(showedUp.get(6))));
             daysShowed -= Double.parseDouble(showedUp.get(6));
         }
         attendPieData.add(new PieChart.Data("Present", daysShowed));
         attendpie.setData(attendPieData);
-        for(PieChart.Data data: attendpie.getData())
+        for (PieChart.Data data : attendpie.getData())
         {
             data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, e ->
             {
@@ -182,6 +189,7 @@ public class MainController {
             });
         }
     }
+
     private void setScheduleData(Document scheduleData)
     {
         List<String> scheduleValues = scheduleData.select(".DATA").eachText();
@@ -231,35 +239,34 @@ public class MainController {
         List<String> letters = grades.select(".Datac").eachText();
         List<String> gradePeds = grades.select(".Labelc").eachText();
         int courseNum = (int) Math.round((courses.size() - 1) / 2.0);
-        for(int i = 0; i < courseNum; i++)
+        for (int i = 0; i < courseNum; i++)
         {
             XYChart.Series currentClassPoints = new XYChart.Series();
             currentClassPoints.setName(courses.get((i * 2) + 2).substring(0, 16));
             int counter = 3;
             String gradeValue = "";
-            for(int j = i * 12; j < (i * 12) + 10; j++)
+            for (int j = i * 12; j < (i * 12) + 10; j++)
             {
-                if(!letters.get(j).isEmpty() || !letters.get(j).equals("&sp;") || !letters.get(j).equals("&nbsp;"))
+                if (!letters.get(j).isEmpty() || !letters.get(j).equals("&sp;") || !letters.get(j).equals("&nbsp;"))
                 {
                     gradeValue = letters.get(j);
-                    if(!gradeValue.isEmpty() && gradeValue.indexOf("-") == -1 && gradeValue.indexOf("+") == -1)
+                    if (!gradeValue.isEmpty() && gradeValue.indexOf("-") == -1 && gradeValue.indexOf("+") == -1)
                     {
                         gradeValue += ",";
                     }
 
                 }
-                if(!gradeValue.isEmpty())
+                if (!gradeValue.isEmpty())
                 {
                     String gradeToday = gradePeds.get(counter);
                     if (gradeToday.length() > 6)
                     {
                         gradeToday = gradeToday.substring(0, 8) + "rog";
-                    }
-                    else
+                    } else
                     {
                         gradeToday = gradeToday.substring(0, 6) + " end";
                     }
-                    if(!gradeToday.equals("Mid Yearrog") && !gradeToday.equals("Final Exrog"))
+                    if (!gradeToday.equals("Mid Yearrog") && !gradeToday.equals("Final Exrog"))
                     {
                         categs.add(gradeToday);
                         ygrades.add(gradeValue);
@@ -280,864 +287,152 @@ public class MainController {
         yAxis.setCategories(sortVals);
         catAxis.setAutoRanging(true);
     }
+
     private void setCanvasAssignments()
     {
+        ObservableList<Tab> cTabs = canvasTabs.getTabs();
         List<List<Assignment>> assignments = cget.getCourseAssignments();
-        List<List<String>> assignString = new ArrayList<>();
-        for(int i = 0; i < assignments.size(); i++)
+        for (int i = 0; i < assignments.size(); i++)
         {
-            assignString.add(new ArrayList<>());
-            for(int j = 0; j < assignments.get(i).size(); j++)
+            TabPane assigns = new TabPane();
+            for (int j = 0; j < assignments.get(i).size(); j++)
             {
-                assignString.get(i).add("========================================");
-                assignString.get(i).add("Name: " + assignments.get(i).get(j).getName());
-                if(assignments.get(i).get(j).getPointsPossible() != null)
+                Tab anAssignment = new Tab(assignments.get(i).get(j).getName());
+                anAssignment.setClosable(false);
+                assigns.getTabs().add(anAssignment);
+                String assignString = "";
+                if (assignments.get(i).get(j).getPointsPossible() != null)
                 {
-                    assignString.get(i).add(assignments.get(i).get(j).getPointsPossible() + " points possible");
+                    assignString += (assignments.get(i).get(j).getPointsPossible() + " points possible");
+                } else
+                {
+                    assignString += ("No points possible.");
                 }
-                else
+                if (assignments.get(i).get(j).getDescription() != null)
                 {
-                    assignString.get(i).add("No points possible.");
-                }
-                if(assignments.get(i).get(j).getDescription() != null)
-                {
-                    if(!assignments.get(i).get(j).getDescription().isEmpty())
+                    if (!assignments.get(i).get(j).getDescription().isEmpty())
                     {
                         String desc = Jsoup.clean(assignments.get(i).get(j).getDescription(), Whitelist.none());
-                        assignString.get(i).add("Description: " + desc.replace("&nbsp;", "\n"));
-                    }
-                    else
+                        assignString += ("\n\nDescription: " + desc.replace("&nbsp;", "\n"));
+                    } else
                     {
-                        assignString.get(i).add("No description.");
+                        assignString += ("\n\nNo description.");
                     }
-                }
-                else
+                } else
                 {
-                    assignString.get(i).add("No description.");
+                    assignString += ("\n\nNo description.");
                 }
-                assignString.get(i).add("Created on: " + assignments.get(i).get(j).getCreatedAt().toString());
-                if(assignments.get(i).get(j).getDueAt() != null)
+                assignString += ("\n\nCreated on: " + assignments.get(i).get(j).getCreatedAt().toString());
+                if (assignments.get(i).get(j).getDueAt() != null)
                 {
-                    assignString.get(i).add("Due by: " + assignments.get(i).get(j).getDueAt().toString());
-                }
-                else
+                    assignString += ("\n\nDue by: " + assignments.get(i).get(j).getDueAt().toString());
+                } else
                 {
-                    assignString.get(i).add("No due date.");
+                    assignString += ("\n\nNo due date.");
                 }
-                assignString.get(i).add("========================================");
-                assignString.get(i).add("\n\n");
+                Text assignText = new Text(assignString);
+                assignText.setFont(new Font("Montserrat SemiBold", 14));
+                assignText.setWrappingWidth(600);
+                assigns.getTabs().get(j).setContent(assignText);
             }
-
-        }
-        for(int i = 0; i < assignments.size(); i++)
-        {
-            ObservableList<String> currentStuds = FXCollections.observableArrayList();
-            currentStuds.setAll(assignString.get(i));
-            switch (i)
-            {
-                case 0: canvascrs1assgn.setItems(currentStuds);
-                    break;
-                case 1: canvascrs2assgn.setItems(currentStuds);
-                    break;
-                case 2: canvascrs3assgn.setItems(currentStuds);
-                    break;
-                case 3: canvascrs4assgn.setItems(currentStuds);
-                    break;
-                case 4: canvascrs5assgn.setItems(currentStuds);
-                    break;
-                case 5: canvascrs6assgn.setItems(currentStuds);
-                    break;
-                case 6: canvascrs7assgn.setItems(currentStuds);
-                    break;
-                case 7: canvascrs8assgn.setItems(currentStuds);
-                    break;
-                case 8: canvascrs9assgn.setItems(currentStuds);
-                    break;
-                case 9: canvascrs10assgn.setItems(currentStuds);
-                    break;
-                case 10: canvascrs11assgn.setItems(currentStuds);
-                    break;
-                case 11: canvascrs12assgn.setItems(currentStuds);
-                    break;
-                case 12: canvascrs13assgn.setItems(currentStuds);
-                    break;
-                case 13: canvascrs14assgn.setItems(currentStuds);
-                    break;
-                case 14: canvascrs15assgn.setItems(currentStuds);
-                    break;
-                case 15: canvascrs16assgn.setItems(currentStuds);
-                    break;
-            }
+            TabPane tPane = (TabPane) cTabs.get(i).getContent();
+            Tab assignmentTab = tPane.getTabs().get(1);
+            assignmentTab.setContent(assigns);
         }
     }
+
     private void setCanvasTabs()
     {
-        for(int i = 0; i < courseInfo.size(); i++)
-        {
-            switch (i)
-            {
-                case 0: canvastab1.setText(courseInfo.get(i).get(0));
-                    break;
-                case 1: canvastab2.setText(courseInfo.get(i).get(0));
-                    break;
-                case 2: canvastab3.setText(courseInfo.get(i).get(0));
-                    break;
-                case 3: canvastab4.setText(courseInfo.get(i).get(0));
-                    break;
-                case 4: canvastab5.setText(courseInfo.get(i).get(0));
-                    break;
-                case 5: canvastab6.setText(courseInfo.get(i).get(0));
-                    break;
-                case 6: canvastab7.setText(courseInfo.get(i).get(0));
-                    break;
-                case 7: canvastab8.setText(courseInfo.get(i).get(0));
-                    break;
-                case 8: canvastab9.setText(courseInfo.get(i).get(0));
-                    break;
-                case 9: canvastab10.setText(courseInfo.get(i).get(0));
-                    break;
-                case 10: canvastab11.setText(courseInfo.get(i).get(0));
-                    break;
-                case 11: canvastab12.setText(courseInfo.get(i).get(0));
-                    break;
-                case 12: canvastab13.setText(courseInfo.get(i).get(0));
-                    break;
-                case 13: canvastab14.setText(courseInfo.get(i).get(0));
-                    break;
-                case 14: canvastab15.setText(courseInfo.get(i).get(0));
-                    break;
-                case 15: canvastab16.setText(courseInfo.get(i).get(0));
-                    break;
-            }
-        }
-    }
-    private void setCanvasStudents()
-    {
-        List<List<String>> studentList = cget.getStudentNames();
-        for(int i = 0; i < studentList.size(); i++)
-        {
-            ObservableList<String> currentStuds = FXCollections.observableArrayList();
-            currentStuds.setAll(studentList.get(i));
-            switch (i)
-            {
-                case 0: canvascrs1stud.setItems(currentStuds);
-                    break;
-                case 1: canvascrs2stud.setItems(currentStuds);
-                    break;
-                case 2: canvascrs3stud.setItems(currentStuds);
-                    break;
-                case 3: canvascrs4stud.setItems(currentStuds);
-                    break;
-                case 4: canvascrs5stud.setItems(currentStuds);
-                    break;
-                case 5: canvascrs6stud.setItems(currentStuds);
-                    break;
-                case 6: canvascrs7stud.setItems(currentStuds);
-                    break;
-                case 7: canvascrs8stud.setItems(currentStuds);
-                    break;
-                case 8: canvascrs9stud.setItems(currentStuds);
-                    break;
-                case 9: canvascrs10stud.setItems(currentStuds);
-                    break;
-                case 10: canvascrs11stud.setItems(currentStuds);
-                    break;
-                case 11: canvascrs12stud.setItems(currentStuds);
-                    break;
-                case 12: canvascrs13stud.setItems(currentStuds);
-                    break;
-                case 13: canvascrs14stud.setItems(currentStuds);
-                    break;
-                case 14: canvascrs15stud.setItems(currentStuds);
-                    break;
-                case 15: canvascrs16stud.setItems(currentStuds);
-                    break;
-            }
-        }
-    }
-    public void setCanvasGrades()
-    {
-        for(int j = 2; j <= 8; j++)
-        {
-            switch (j)
-            {
-                case 2:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm0.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm0.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm0.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.get(3).size() > j)
-                    {
-                        canvascrs4trm0.setText(courseInfo.get(3).get(j));
-                    }
-                    if(courseInfo.get(4).size() > j)
-                    {
-                        canvascrs5trm0.setText(courseInfo.get(4).get(j));
-                    }
-                    if(courseInfo.get(5).size() > j)
-                    {
-                        canvascrs6trm0.setText(courseInfo.get(5).get(j));
-                    }
-                    if(courseInfo.get(6).size() > j)
-                    {
-                        canvascrs7trm0.setText(courseInfo.get(6).get(j));
-                    }
-                    if(courseInfo.size() > 7)
-                    {
-                        if(courseInfo.get(7).size() > j)
-                        {
-                            canvascrs8trm0.setText(courseInfo.get(7).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm0.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm0.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm0.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm0.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm0.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm0.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm0.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm0.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
-                case 3:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm1.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm1.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm1.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.size() > 3)
-                    {
-                        if(courseInfo.get(3).size() > j)
-                        {
-                            canvascrs4trm1.setText(courseInfo.get(3).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 4)
-                    {
-                        if(courseInfo.get(4).size() > j)
-                        {
-                            canvascrs5trm1.setText(courseInfo.get(4).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 5)
-                    {
-                        if(courseInfo.get(5).size() > j)
-                        {
-                            canvascrs6trm1.setText(courseInfo.get(5).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 6)
-                    {
-                        if(courseInfo.get(6).size() > j)
-                        {
-                            canvascrs7trm1.setText(courseInfo.get(6).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 7)
-                    {
-                        if(courseInfo.get(7).size() > j)
-                        {
-                            canvascrs8trm1.setText(courseInfo.get(7).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm1.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm1.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm1.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm1.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm1.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm1.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm1.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm1.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
-                case 4:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm2.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm2.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm2.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.get(3).size() > j)
-                    {
-                        canvascrs4trm2.setText(courseInfo.get(3).get(j));
-                    }
-                    if(courseInfo.get(4).size() > j)
-                    {
-                        canvascrs5trm2.setText(courseInfo.get(4).get(j));
-                    }
-                    if(courseInfo.get(5).size() > j)
-                    {
-                        canvascrs6trm2.setText(courseInfo.get(5).get(j));
-                    }
-                    if(courseInfo.get(6).size() > j)
-                    {
-                        canvascrs7trm2.setText(courseInfo.get(6).get(j));
-                    }
-                    if(courseInfo.size() > 7)
-                    {
-                        if(courseInfo.get(7).size() > j)
-                        {
-                            canvascrs8trm2.setText(courseInfo.get(7).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm2.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm2.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm2.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm2.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm2.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm2.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm2.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm2.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
-                case 5:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm3.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm3.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm3.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.get(3).size() > j)
-                    {
-                        canvascrs4trm3.setText(courseInfo.get(3).get(j));
-                    }
-                    if(courseInfo.get(4).size() > j)
-                    {
-                        canvascrs5trm3.setText(courseInfo.get(4).get(j));
-                    }
-                    if(courseInfo.get(5).size() > j)
-                    {
-                        canvascrs6trm3.setText(courseInfo.get(5).get(j));
-                    }
-                    if(courseInfo.get(6).size() > j)
-                    {
-                        canvascrs7trm3.setText(courseInfo.get(6).get(j));
-                    }
-                    if(courseInfo.size() > 7)
-                    {
-                        if(courseInfo.get(7).size() > j)
-                        {
-                            canvascrs8trm3.setText(courseInfo.get(7).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm3.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm3.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm3.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm3.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm3.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm3.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm3.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm3.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
-                case 6:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm4.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm4.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm4.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.get(3).size() > j)
-                    {
-                        canvascrs4trm4.setText(courseInfo.get(3).get(j));
-                    }
-                    if(courseInfo.get(4).size() > j)
-                    {
-                        canvascrs5trm4.setText(courseInfo.get(4).get(j));
-                    }
-                    if(courseInfo.get(5).size() > j)
-                    {
-                        canvascrs6trm4.setText(courseInfo.get(5).get(j));
-                    }
-                    if(courseInfo.get(6).size() > j)
-                    {
-                        canvascrs7trm4.setText(courseInfo.get(6).get(j));
-                    }
-                    if(courseInfo.size() > 7)
-                    {
-                        if(courseInfo.get(7).size() > j)
-                        {
-                            canvascrs8trm4.setText(courseInfo.get(7).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm4.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm4.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm4.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm4.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm4.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm4.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm4.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm4.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
-                case 7:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm5.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm5.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm5.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.get(3).size() > j)
-                    {
-                        canvascrs4trm5.setText(courseInfo.get(3).get(j));
-                    }
-                    if(courseInfo.get(4).size() > j)
-                    {
-                        canvascrs5trm5.setText(courseInfo.get(4).get(j));
-                    }
-                    if(courseInfo.get(5).size() > j)
-                    {
-                        canvascrs6trm5.setText(courseInfo.get(5).get(j));
-                    }
-                    if(courseInfo.get(6).size() > j)
-                    {
-                        canvascrs7trm5.setText(courseInfo.get(6).get(j));
-                    }
-                    if(courseInfo.size() > 7)
-                    {
-                        if(courseInfo.get(7).size() > j)
-                        {
-                            canvascrs8trm5.setText(courseInfo.get(7).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm5.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm5.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm5.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm5.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm5.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm5.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm6.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm6.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
-                case 8:
-                    if(courseInfo.get(0).size() > j)
-                    {
-                        canvascrs1trm6.setText(courseInfo.get(0).get(j));
-                    }
-                    if(courseInfo.get(1).size() > j)
-                    {
-                        canvascrs2trm6.setText(courseInfo.get(1).get(j));
-                    }
-                    if(courseInfo.get(2).size() > j)
-                    {
-                        canvascrs3trm6.setText(courseInfo.get(2).get(j));
-                    }
-                    if(courseInfo.get(3).size() > j)
-                    {
-                        canvascrs4trm6.setText(courseInfo.get(3).get(j));
-                    }
-                    if(courseInfo.get(4).size() > j)
-                    {
-                        canvascrs5trm6.setText(courseInfo.get(4).get(j));
-                    }
-                    if(courseInfo.get(5).size() > j)
-                    {
-                        canvascrs6trm6.setText(courseInfo.get(5).get(j));
-                    }
-                    if(courseInfo.get(6).size() > j)
-                    {
-                        canvascrs7trm6.setText(courseInfo.get(6).get(j));
-                    }
 
-                    if(courseInfo.size() > 7)
+        for (int i = 0; i < courseInfo.size(); i++)
+        {
+            TabPane subTabs = new TabPane();
+            Tab gradesMates = new Tab("Grades/Classmates");
+            Tab assign = new Tab("Assignments");
+            gradesMates.setClosable(false);
+            assign.setClosable(false);
+            subTabs.getTabs().add(gradesMates);
+            subTabs.getTabs().add(assign);
+            Tab currentClass = new Tab(courseInfo.get(i).get(0), subTabs);
+            canvasTabs.getTabs().add(currentClass);
+        }
+    }
+        private void setCanvasGradesAndStudents()
+        {
+            ObservableList<Tab> cTabs = canvasTabs.getTabs();
+            List<List<String>> studentList = cget.getStudentNames();
+            for(int i = 0; i < cTabs.size(); i++)
+            {
+                TabPane tPane = (TabPane) cTabs.get(i).getContent();
+                Tab gradesAndStus = tPane.getTabs().get(0);
+                GridPane grid = new GridPane();
+                List<ColumnConstraints> cols = new ArrayList<>();
+                ListView<String> viewStudents = new ListView<>();
+                ObservableList<String> currentStuds = FXCollections.observableArrayList();
+                if(studentList.size() > i)
+                {
+                    currentStuds.setAll(studentList.get(i));
+                }
+                viewStudents.setItems(currentStuds);
+                for(int j = 0; j < 7; j++)
+                {
+                    cols.add(new ColumnConstraints());
+                    cols.get(j).setHgrow(Priority.ALWAYS);
+                }
+                RowConstraints row1 = new RowConstraints();
+                RowConstraints row2 = new RowConstraints();
+                grid.getColumnConstraints().addAll(cols);
+                grid.getRowConstraints().add(row1);
+                grid.getRowConstraints().add(row2);
+                grid.setGridLinesVisible(true);
+                grid.setAlignment(Pos.TOP_CENTER);
+                List<Text> words = new ArrayList<>();
+                words.add(new Text("Overall"));
+                words.add(new Text("Term 1"));
+                words.add(new Text("Term 2"));
+                words.add(new Text("Midterms"));
+                words.add(new Text("Term 3"));
+                words.add(new Text("Term 4"));
+                words.add(new Text("Finals"));
+                for(int j = 2; j <= 8; j++)
+                {
+                    if(courseInfo.get(i).size() > j)
                     {
-                        if(courseInfo.get(7).size() > j)
+                        words.add(new Text(courseInfo.get(i).get(j)));
+                    }
+                }
+                for(Text t: words)
+                {
+                    t.setFont(new Font("Montserrat SemiBold", 16));
+                }
+                for(int j = 0; j <= 1; j++)
+                {
+                    for(int k = 0; k <= 6; k++)
+                    {
+                        if(!words.isEmpty())
                         {
-                            canvascrs8trm6.setText(courseInfo.get(7).get(j));
+                            grid.add(words.get(0), k, j);
+                            words.remove(0);
                         }
                     }
-                    if(courseInfo.size() > 8)
-                    {
-                        if(courseInfo.get(8).size() > j)
-                        {
-                            canvascrs9trm6.setText(courseInfo.get(8).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 9)
-                    {
-                        if(courseInfo.get(9).size() > j)
-                        {
-                            canvascrs10trm6.setText(courseInfo.get(9).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 10)
-                    {
-                        if(courseInfo.get(10).size() > j)
-                        {
-                            canvascrs11trm6.setText(courseInfo.get(10).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 11)
-                    {
-                        if(courseInfo.get(11).size() > j)
-                        {
-                            canvascrs12trm6.setText(courseInfo.get(11).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 12)
-                    {
-                        if(courseInfo.get(12).size() > j)
-                        {
-                            canvascrs13trm6.setText(courseInfo.get(12).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 13)
-                    {
-                        if(courseInfo.get(13).size() > j)
-                        {
-                            canvascrs14trm6.setText(courseInfo.get(13).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 14)
-                    {
-                        if(courseInfo.get(14).size() > j)
-                        {
-                            canvascrs15trm6.setText(courseInfo.get(14).get(j));
-                        }
-                    }
-                    if(courseInfo.size() > 15)
-                    {
-                        if(courseInfo.get(15).size() > j)
-                        {
-                            canvascrs16trm6.setText(courseInfo.get(15).get(j));
-                        }
-                    }
-                    break;
+                }
+                for(Node n: grid.getChildren())
+                {
+                    GridPane.setHalignment(n, HPos.CENTER);
+                    GridPane.setMargin(n, new Insets(5));
+                }
+                gradesAndStus.setContent(new VBox(grid, viewStudents));
             }
         }
-
-    }
-    private void setClubTabs()
-    {
-        for(List<String> currentClubData: clubData)
+        private void setClubTabs()
         {
-            Text clubBody = new Text(currentClubData.get(1));
-            clubBody.setFont(new Font("Montserrat SemiBold", 14));
-            clubBody.setWrappingWidth(600);
-            Tab clubTab = new Tab(currentClubData.get(0), clubBody);
-            clubTabs.getTabs().add(clubTab);
+            for (List<String> currentClubData : clubData)
+            {
+                Text clubBody = new Text(currentClubData.get(1));
+                clubBody.setFont(new Font("Montserrat SemiBold", 14));
+                clubBody.setWrappingWidth(600);
+                Tab clubTab = new Tab(currentClubData.get(0), clubBody);
+                clubTabs.getTabs().add(clubTab);
+            }
         }
     }
-}
