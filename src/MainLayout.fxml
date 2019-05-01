@@ -494,7 +494,20 @@
           </Tab>
             <Tab text="Academics">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                          <TabPane fx:id="academicTabs" prefHeight="367.0" prefWidth="600.0"
+                                   tabClosingPolicy="UNAVAILABLE"/>
+                          <ProgressIndicator fx:id="academicLoad" layoutX="264.0" layoutY="151.0" prefHeight="73.0"
+                                             prefWidth="66.0"/>
+                          <Text fx:id="academicLoadText" layoutX="230.0" layoutY="260.0" strokeType="OUTSIDE"
+                                strokeWidth="0.0" text="Loading...">
+                              <font>
+                                  <Font name="Montserrat SemiBold" size="27.0"/>
+                              </font>
+                          </Text>
+                      </children>
+                  </AnchorPane>
               </content>
             </Tab>
             <Tab text="Athletics">

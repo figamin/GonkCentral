@@ -59,16 +59,19 @@ public class MainController {
     @FXML
     private CategoryAxis catAxis;
     @FXML
-    private ProgressIndicator canvasload, iPassLoad, clubLoad;
+    private ProgressIndicator canvasload, iPassLoad, academicLoad, clubLoad;
     @FXML
-    private Text canvasloadtext, iPassLoadText, clubLoadText;
+    private Text canvasloadtext, iPassLoadText, academicLoadText, clubLoadText;
     @FXML
     private Text builddate;
+    @FXML
+    private TabPane academicTabs;
     @FXML
     private TabPane clubTabs;
     @FXML
     private TabPane canvasTabs;
     private List<List<String>> courseInfo;
+    private List<List<String>> academicData;
     private List<List<String>> clubData;
 
     public void logIn(String username, String password, String oauth)
@@ -95,6 +98,13 @@ public class MainController {
             }
 
         };
+        Task<List<List<String>>> academicGetter = new Task<List<List<String>>>() {
+            @Override
+            protected List<List<String>> call() throws Exception
+            {
+                return AcademicInfoGetter.getInfo();
+            }
+        };
         Task<List<List<String>>> clubGetter = new Task<List<List<String>>>() {
             @Override
             protected List<List<String>> call() throws Exception
@@ -111,6 +121,13 @@ public class MainController {
             setGradeChart(iPassData.get(3));
             iPassLoad.setVisible(false);
             iPassLoadText.setVisible(false);
+        });
+        academicGetter.setOnSucceeded(e ->
+        {
+            academicData = academicGetter.getValue();
+            setAcademicTabs();
+            academicLoad.setVisible(false);
+            academicLoadText.setVisible(false);
         });
         clubGetter.setOnSucceeded(e ->
         {
@@ -131,11 +148,14 @@ public class MainController {
         });
         Thread iPassThread = new Thread(iPassGetter);
         Thread canvThread = new Thread(canvasGetter);
+        Thread academicThread = new Thread(academicGetter);
         Thread clubThread = new Thread(clubGetter);
         iPassThread.setDaemon(true);
         iPassThread.start();
         canvThread.setDaemon(true);
         canvThread.start();
+        academicThread.setDaemon(true);
+        academicThread.start();
         clubThread.setDaemon(true);
         clubThread.start();
         gradeline.setLegendSide(Side.RIGHT);
@@ -340,10 +360,8 @@ public class MainController {
             assignmentTab.setContent(assigns);
         }
     }
-
     private void setCanvasTabs()
     {
-
         for (int i = 0; i < courseInfo.size(); i++)
         {
             TabPane subTabs = new TabPane();
@@ -424,6 +442,18 @@ public class MainController {
                 gradesAndStus.setContent(new VBox(grid, viewStudents));
             }
         }
+
+    private void setAcademicTabs()
+    {
+        for (List<String> currentAcademicData : academicData)
+        {
+            Text departmentBody = new Text(currentAcademicData.get(1));
+            departmentBody.setFont(new Font("Montserrat SemiBold", 14));
+            departmentBody.setWrappingWidth(600);
+            Tab departmentTab = new Tab(currentAcademicData.get(0), departmentBody);
+            academicTabs.getTabs().add(departmentTab);
+        }
+    }
         private void setClubTabs()
         {
             for (List<String> currentClubData : clubData)
