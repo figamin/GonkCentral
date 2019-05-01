@@ -6,7 +6,7 @@ A Java program to act as a "hub" for all things Algonquin, built with JavaFX 8 u
 - Academic/Club information (from ARHS Blackboard site)
 - Guest Mode (skip IPass/Canvas login)
 ## TODO
-- Athletic/information
+- Athletic information
 - Arts information (from https://gonkarts.org)
 - Harbringer integreation (getting articles)
 - WARHS playback (former shows with Google Drive
