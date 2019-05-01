@@ -65,6 +65,8 @@ public class MainController {
     @FXML
     private Text builddate;
     @FXML
+    private TabPane motherTabs;
+    @FXML
     private TabPane academicTabs;
     @FXML
     private TabPane clubTabs;
@@ -74,6 +76,46 @@ public class MainController {
     private List<List<String>> academicData;
     private List<List<String>> clubData;
 
+    public void logIn()
+    {
+        motherTabs.getTabs().remove(0);
+        motherTabs.getTabs().remove(0);
+        builddate.setText("Built on " + LocalDate.now());
+        Task<List<List<String>>> academicGetter = new Task<List<List<String>>>() {
+            @Override
+            protected List<List<String>> call() throws Exception
+            {
+                return AcademicInfoGetter.getInfo();
+            }
+        };
+        Task<List<List<String>>> clubGetter = new Task<List<List<String>>>() {
+            @Override
+            protected List<List<String>> call() throws Exception
+            {
+                return ClubInfoGetter.getInfo();
+            }
+        };
+        academicGetter.setOnSucceeded(e ->
+        {
+            academicData = academicGetter.getValue();
+            setAcademicTabs();
+            academicLoad.setVisible(false);
+            academicLoadText.setVisible(false);
+        });
+        clubGetter.setOnSucceeded(e ->
+        {
+            clubData = clubGetter.getValue();
+            setClubTabs();
+            clubLoad.setVisible(false);
+            clubLoadText.setVisible(false);
+        });
+        Thread academicThread = new Thread(academicGetter);
+        Thread clubThread = new Thread(clubGetter);
+        academicThread.setDaemon(true);
+        academicThread.start();
+        clubThread.setDaemon(true);
+        clubThread.start();
+    }
     public void logIn(String username, String password, String oauth)
     {
         builddate.setText("Built on " + LocalDate.now());

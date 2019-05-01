@@ -19,7 +19,8 @@ public class LoginController {
     @FXML private TextField username;
     @FXML private PasswordField password;
     @FXML private PasswordField oauthzone;
-    @FXML private Button loginpress;
+    @FXML
+    private Button loginpress, guestPress;
     @FXML protected void buttonPress(ActionEvent e) throws IOException
     {
         IPassLogin letsGo = new IPassLogin(username.getText(), password.getText());
@@ -42,5 +43,11 @@ public class LoginController {
                 f.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    protected void guestButtonPress(ActionEvent e) throws IOException
+    {
+        new MainWindow(guestPress);
     }
 }
