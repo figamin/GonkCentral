@@ -74,6 +74,8 @@ public class MainController {
     private TabPane athleticTabs;
     @FXML
     AnchorPane athanco;
+    @FXML
+    GridPane iPassInfo, iPassSched;
     private List<List<String>> courseInfo;
     private List<List<String>> academicData;
     private List<List<String>> clubData;
@@ -86,7 +88,14 @@ public class MainController {
         clubTabs.setPrefWidth(neoWidth);
         canvasTabs.setPrefWidth(neoWidth);
         athleticTabs.setPrefWidth(neoWidth);
+        iPassInfo.setPrefWidth(neoWidth);
+        iPassSched.setPrefWidth(neoWidth);
         for (Tab tab : academicTabs.getTabs())
+        {
+            Text txt = (Text) tab.getContent();
+            txt.setWrappingWidth(neoWidth);
+        }
+        for (Tab tab : clubTabs.getTabs())
         {
             Text txt = (Text) tab.getContent();
             txt.setWrappingWidth(neoWidth);
@@ -98,7 +107,8 @@ public class MainController {
         athanco.setPrefHeight(neoHeight);
         athleticTabs.setPrefHeight(neoHeight);
         academicTabs.setPrefHeight(neoHeight);
-
+        iPassInfo.setPrefHeight(neoHeight - 75);
+        iPassSched.setPrefHeight(neoHeight - 75);
     }
     public void logIn()
     {
