@@ -1,6 +1,6 @@
 import edu.ksu.canvas.model.assignment.Assignment;
+
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -9,20 +9,17 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.scene.text.TextBoundsType;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -34,6 +31,7 @@ import java.util.*;
 
 public class MainController {
     private CanvasInfoGetter cget;
+    private TwitterGetter tget;
     @FXML
     private Text ipassstu1, ipassstu2, ipassstu3, ipassstu4, ipassstu5, ipassstu6, ipassstu7, ipassstu8, ipassstu9, ipassstu10, ipassstu11;
     @FXML
@@ -59,9 +57,9 @@ public class MainController {
     @FXML
     private CategoryAxis catAxis;
     @FXML
-    private ProgressIndicator canvasload, iPassLoad, academicLoad, clubLoad;
+    private ProgressIndicator canvasload, iPassLoad, academicLoad, clubLoad, athleticLoad;
     @FXML
-    private Text canvasloadtext, iPassLoadText, academicLoadText, clubLoadText;
+    private Text canvasloadtext, iPassLoadText, academicLoadText, clubLoadText, athleticLoadText;
     @FXML
     private Text builddate;
     @FXML
@@ -72,53 +70,45 @@ public class MainController {
     private TabPane clubTabs;
     @FXML
     private TabPane canvasTabs;
+    @FXML
+    private TabPane athleticTabs;
+    @FXML
+    AnchorPane athanco;
     private List<List<String>> courseInfo;
     private List<List<String>> academicData;
     private List<List<String>> clubData;
+    private List<List<String>> sportsTweets;
 
+    public void resizeWidth(double neoWidth)
+    {
+        motherTabs.setPrefWidth(neoWidth);
+        academicTabs.setPrefWidth(neoWidth);
+        clubTabs.setPrefWidth(neoWidth);
+        canvasTabs.setPrefWidth(neoWidth);
+        athleticTabs.setPrefWidth(neoWidth);
+        for (Tab tab : academicTabs.getTabs())
+        {
+            Text txt = (Text) tab.getContent();
+            txt.setWrappingWidth(neoWidth);
+        }
+    }
+
+    public void resizeHeight(double neoHeight)
+    {
+        athanco.setPrefHeight(neoHeight);
+        athleticTabs.setPrefHeight(neoHeight);
+        academicTabs.setPrefHeight(neoHeight);
+
+    }
     public void logIn()
     {
         motherTabs.getTabs().remove(0);
         motherTabs.getTabs().remove(0);
-        builddate.setText("Built on " + LocalDate.now());
-        Task<List<List<String>>> academicGetter = new Task<List<List<String>>>() {
-            @Override
-            protected List<List<String>> call() throws Exception
-            {
-                return AcademicInfoGetter.getInfo();
-            }
-        };
-        Task<List<List<String>>> clubGetter = new Task<List<List<String>>>() {
-            @Override
-            protected List<List<String>> call() throws Exception
-            {
-                return ClubInfoGetter.getInfo();
-            }
-        };
-        academicGetter.setOnSucceeded(e ->
-        {
-            academicData = academicGetter.getValue();
-            setAcademicTabs();
-            academicLoad.setVisible(false);
-            academicLoadText.setVisible(false);
-        });
-        clubGetter.setOnSucceeded(e ->
-        {
-            clubData = clubGetter.getValue();
-            setClubTabs();
-            clubLoad.setVisible(false);
-            clubLoadText.setVisible(false);
-        });
-        Thread academicThread = new Thread(academicGetter);
-        Thread clubThread = new Thread(clubGetter);
-        academicThread.setDaemon(true);
-        academicThread.start();
-        clubThread.setDaemon(true);
-        clubThread.start();
+        commonLogin();
     }
     public void logIn(String username, String password, String oauth)
     {
-        builddate.setText("Built on " + LocalDate.now());
+        commonLogin();
         Task<List<Document>> iPassGetter = new Task<List<Document>>() {
             @Override
             protected List<Document> call() throws Exception
@@ -138,8 +128,39 @@ public class MainController {
             {
                 return new CanvasInfoGetter(oauth);
             }
-
         };
+        iPassGetter.setOnSucceeded(e ->
+        {
+            List<Document> iPassData = iPassGetter.getValue();
+            setBioText(iPassData.get(0));
+            setPieData(iPassData.get(1));
+            setScheduleData(iPassData.get(2));
+            setGradeChart(iPassData.get(3));
+            iPassLoad.setVisible(false);
+            iPassLoadText.setVisible(false);
+        });
+        canvasGetter.setOnSucceeded(e ->
+        {
+            cget = canvasGetter.getValue();
+            courseInfo = cget.getCourseInfo();
+            setCanvasTabs();
+            setCanvasGradesAndStudents();
+            setCanvasAssignments();
+            canvasload.setVisible(false);
+            canvasloadtext.setVisible(false);
+        });
+        Thread iPassThread = new Thread(iPassGetter);
+        Thread canvThread = new Thread(canvasGetter);
+        iPassThread.setDaemon(true);
+        iPassThread.start();
+        canvThread.setDaemon(true);
+        canvThread.start();
+        gradeline.setLegendSide(Side.RIGHT);
+    }
+
+    private void commonLogin()
+    {
+        builddate.setText("Built on " + LocalDate.now());
         Task<List<List<String>>> academicGetter = new Task<List<List<String>>>() {
             @Override
             protected List<List<String>> call() throws Exception
@@ -154,16 +175,20 @@ public class MainController {
                 return ClubInfoGetter.getInfo();
             }
         };
-        iPassGetter.setOnSucceeded(e ->
-        {
-            List<Document> iPassData = iPassGetter.getValue();
-            setBioText(iPassData.get(0));
-            setPieData(iPassData.get(1));
-            setScheduleData(iPassData.get(2));
-            setGradeChart(iPassData.get(3));
-            iPassLoad.setVisible(false);
-            iPassLoadText.setVisible(false);
-        });
+        Task<TwitterGetter> twitterGetter = new Task<TwitterGetter>() {
+            @Override
+            protected TwitterGetter call() throws Exception
+            {
+                return new TwitterGetter();
+            }
+        };
+        Task<List<List<String>>> sportsGetter = new Task<List<List<String>>>() {
+            @Override
+            protected List<List<String>> call() throws Exception
+            {
+                return tget.gonkSportsTweetGetter();
+            }
+        };
         academicGetter.setOnSucceeded(e ->
         {
             academicData = academicGetter.getValue();
@@ -178,31 +203,30 @@ public class MainController {
             clubLoad.setVisible(false);
             clubLoadText.setVisible(false);
         });
-        canvasGetter.setOnSucceeded(e ->
+        twitterGetter.setOnSucceeded(e ->
         {
-            cget = canvasGetter.getValue();
-            courseInfo = cget.getCourseInfo();
-            setCanvasTabs();
-            setCanvasGradesAndStudents();
-            setCanvasAssignments();
-            canvasload.setVisible(false);
-            canvasloadtext.setVisible(false);
+            tget = twitterGetter.getValue();
+            Thread sportThread = new Thread(sportsGetter);
+            sportThread.setDaemon(true);
+            sportThread.start();
         });
-        Thread iPassThread = new Thread(iPassGetter);
-        Thread canvThread = new Thread(canvasGetter);
+        sportsGetter.setOnSucceeded(e ->
+        {
+            sportsTweets = sportsGetter.getValue();
+            setSportsTweets();
+            athleticLoad.setVisible(false);
+            athleticLoadText.setVisible(false);
+        });
         Thread academicThread = new Thread(academicGetter);
         Thread clubThread = new Thread(clubGetter);
-        iPassThread.setDaemon(true);
-        iPassThread.start();
-        canvThread.setDaemon(true);
-        canvThread.start();
+        Thread twitterThread = new Thread(twitterGetter);
         academicThread.setDaemon(true);
         academicThread.start();
         clubThread.setDaemon(true);
         clubThread.start();
-        gradeline.setLegendSide(Side.RIGHT);
+        twitterThread.setDaemon(true);
+        twitterThread.start();
     }
-
     private void setBioText(Document parsedBio)
     {
         List<String> ageInfo = parsedBio.select(".DataMBl").eachText();
@@ -496,15 +520,30 @@ public class MainController {
             academicTabs.getTabs().add(departmentTab);
         }
     }
-        private void setClubTabs()
+
+    private void setClubTabs()
+    {
+        for (List<String> currentClubData : clubData)
         {
-            for (List<String> currentClubData : clubData)
-            {
-                Text clubBody = new Text(currentClubData.get(1));
-                clubBody.setFont(new Font("Montserrat SemiBold", 14));
-                clubBody.setWrappingWidth(600);
-                Tab clubTab = new Tab(currentClubData.get(0), clubBody);
-                clubTabs.getTabs().add(clubTab);
-            }
+            Text clubBody = new Text(currentClubData.get(1));
+            clubBody.setFont(new Font("Montserrat SemiBold", 14));
+            clubBody.setWrappingWidth(600);
+            Tab clubTab = new Tab(currentClubData.get(0), clubBody);
+            clubTabs.getTabs().add(clubTab);
         }
     }
+
+    private void setSportsTweets()
+    {
+        for (int i = 0; i < sportsTweets.size(); i++)
+        {
+            Tab currentTeam = new Tab(sportsTweets.get(i).get(0));
+            sportsTweets.get(i).remove(0);
+            ObservableList<String> observeTweets = FXCollections.observableArrayList(sportsTweets.get(i));
+            ListView<String> tweets = new ListView<>();
+            tweets.setItems(observeTweets);
+            currentTeam.setContent(tweets);
+            athleticTabs.getTabs().add(currentTeam);
+        }
+    }
+}

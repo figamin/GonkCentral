@@ -13,5 +13,6 @@
     <orderEntry type="library" exported="" name="org.jsoup:jsoup:1.11.3" level="project" />
     <orderEntry type="library" exported="" name="edu.ksu.canvas:canvas-api:1.0.19" level="project" />
     <orderEntry type="library" exported="" name="log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="org.twitter4j:twitter4j-core:4.0.7" level="project" />
   </component>
 </module>

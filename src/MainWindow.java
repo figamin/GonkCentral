@@ -1,3 +1,5 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,23 +16,27 @@ import java.io.IOException;
 public class MainWindow extends Stage{
     public MainWindow(Button starterButton, String uname, String pass, String oauth) throws IOException
     {
-        FXMLLoader loginLoad = new FXMLLoader(getClass().getResource("MainLayout.fxml"));
-        Parent root = loginLoad.load();
-        Stage stage = (Stage) starterButton.getScene().getWindow();
-        stage.setTitle("Gonk Central");
-        MainController control = loginLoad.getController();
-        stage.setScene(new Scene(root, 600, 400));
-        control.logIn(uname, pass, oauth);
+        MainController mControl = commonCode(starterButton);
+        mControl.logIn(uname, pass, oauth);
     }
 
     public MainWindow(Button starterButton) throws IOException
     {
+        MainController mControl = commonCode(starterButton);
+        mControl.logIn();
+    }
+
+    private MainController commonCode(Button button) throws IOException
+    {
         FXMLLoader loginLoad = new FXMLLoader(getClass().getResource("MainLayout.fxml"));
         Parent root = loginLoad.load();
-        Stage stage = (Stage) starterButton.getScene().getWindow();
+        Stage stage = (Stage) button.getScene().getWindow();
         stage.setTitle("Gonk Central");
         MainController control = loginLoad.getController();
-        stage.setScene(new Scene(root, 600, 400));
-        control.logIn();
+        Scene mainScene = new Scene(root, 600, 400);
+        mainScene.widthProperty().addListener((observable, oldWidth, newWidth) -> control.resizeWidth(newWidth.doubleValue()));
+        mainScene.heightProperty().addListener((observable, oldHeight, newHeight) -> control.resizeHeight(newHeight.doubleValue()));
+        stage.setScene(mainScene);
+        return control;
     }
 }
