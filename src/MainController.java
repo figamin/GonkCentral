@@ -100,6 +100,16 @@ public class MainController {
             Text txt = (Text) tab.getContent();
             txt.setWrappingWidth(neoWidth);
         }
+        /*ObservableList<Tab> cTabs = canvasTabs.getTabs();
+        for(int i = 0; i < cTabs.size(); i++)
+        {
+            TabPane tPane = (TabPane) cTabs.get(i).getContent();
+            Tab assigns = tPane.getTabs().get(1);
+            TabPane test = assigns.getTabPane();
+            Tab rr = test.getTabs().get(0).ge
+            Text asignText = (Text) assigns.getContent();
+            asignText.setWrappingWidth(neoWidth);
+        }*/
     }
 
     public void resizeHeight(double neoHeight)
@@ -109,6 +119,15 @@ public class MainController {
         academicTabs.setPrefHeight(neoHeight);
         iPassInfo.setPrefHeight(neoHeight - 75);
         iPassSched.setPrefHeight(neoHeight - 75);
+        /*ObservableList<Tab> cTabs = canvasTabs.getTabs();
+        for(int i = 0; i < cTabs.size(); i++)
+        {
+            TabPane tPane = (TabPane) cTabs.get(i).getContent();
+            Tab gStuds = tPane.getTabs().get(1);
+            VBox veebs = (VBox) gStuds.getContent();
+            ListView stuList = (ListView) veebs.getChildren().get(1);
+            stuList.setPrefHeight(neoHeight * .66);
+        }*/
     }
     public void logIn()
     {
