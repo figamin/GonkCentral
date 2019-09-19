@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 /**
  * Ian Anderson
  * 4/11/19
+ * GonkMain: Main class of GonkCentral, used to load the login scene
+ * and the layout.
  */
 
 public class GonkMain extends Application{
