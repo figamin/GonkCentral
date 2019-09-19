@@ -10,6 +10,8 @@ import java.net.URL;
 /**
  * Ian Anderson
  * 4/10/19
+ * IPassLogin: A class to fetch info from ARHS's iPass pages, using classes
+ * from java.net.
  */
 
 public class IPassLogin {
